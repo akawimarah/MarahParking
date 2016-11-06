@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MarahParking</string>
+    <string name="Email">البريد الالكتروني</string>
+    <string name="Name">الاسم الكامل</string>
+    <string name="Password">كلمة السر</string>
+    <string name="email">البريد الالكتروني</string>
+    <string name="password">كلمة السر</string>
+    <string name="repass">اعادة كلمة السر</string>
+    <string name="logOut">الخروج</string>
+    <string name="settings">اعدادات</string>
+</resources>

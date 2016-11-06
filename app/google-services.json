@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "737620529152",
+    "firebase_url": "https://parkingmarah.firebaseio.com",
+    "project_id": "parkingmarah",
+    "storage_bucket": "parkingmarah.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737620529152:android:bfa623df67c54960",
+        "android_client_info": {
+          "package_name": "com.akawi.marah.marahparking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737620529152-3iua4utkpu2cdcuf68324g0o8tce70va.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.akawi.marah.marahparking",
+            "certificate_hash": "207C202ECE9FFC5136A38028C1532ACC3AB7EAF8"
+          }
+        },
+        {
+          "client_id": "737620529152-nreii7092t0pn2t7m8ojcji85nel1idq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnmqJjoTBuKKrFNo2XtHEb8O7YSgVJs7w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737620529152-nreii7092t0pn2t7m8ojcji85nel1idq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

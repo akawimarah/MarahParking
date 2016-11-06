@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MarahParking</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="repass">Repass</string>
+    <string name="Name">name</string>
+    <string name="logOut">log out</string>
+    <string name="settings">settings</string>
+    <string name="title_activity_maps1">Map</string>
+</resources>
