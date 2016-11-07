@@ -15,7 +15,8 @@
         android:text="Start"
         android:id="@+id/btnStart"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/song" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,8 +32,9 @@
         android:text="End"
         android:id="@+id/btnEnd"
         android:layout_below="@+id/tvStart"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp" />
+        android:layout_marginTop="54dp"
+        android:layout_alignEnd="@+id/btnStart"
+        android:layout_alignStart="@+id/btnStart" />
 
     <TextView
         android:layout_width="wrap_content"
