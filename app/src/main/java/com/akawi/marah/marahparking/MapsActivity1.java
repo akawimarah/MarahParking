@@ -1,17 +1,25 @@
 package com.akawi.marah.marahparking;
 
+import android.location.Geocoder;
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.os.AsyncTaskCompat;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.identity.intents.Address;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.List;
+import java.util.Locale;
 
 public class MapsActivity1 extends FragmentActivity implements OnMapReadyCallback {
 
@@ -56,6 +64,24 @@ public class MapsActivity1 extends FragmentActivity implements OnMapReadyCallbac
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    private void search(String s){
+        AsyncTask<Void,Integer,List<Address>> asyncTask=new AsyncTask<Void, Integer, List<Address>>() {
+            List<Address> locatoins = null;
+            Geocoder geocoder;
+            protected void onPreExecute(){
+                locatoins = null;
+                geocoder=new Geocoder(MapsActivity1.this,Locale.getDefault());
+                super.onPreExecute();
+
+            }
+            @Override
+            protected List<Address> doInBackground(Void... params){
+
+                return locatoins;
+
+            }
+        };
+    }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;

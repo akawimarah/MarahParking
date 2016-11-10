@@ -72,7 +72,7 @@ public class signInActivity extends AppCompatActivity {
         btnsignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent i = new Intent(signInActivity.this,mapActivity.class);
+               Intent i = new Intent(signInActivity.this,MapsActivity1.class);
                 startActivity(i);
                 dataHandler();
 
