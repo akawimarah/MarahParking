@@ -1,12 +1,14 @@
 package com.akawi.marah.marahparking;
 
+import android.content.Intent;
 import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.os.AsyncTaskCompat;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,6 +19,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 import java.util.Locale;
@@ -24,11 +32,18 @@ import java.util.Locale;
 public class MapsActivity1 extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Button btnAddParking;
+    private ListView listView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps1);
+        btnAddParking =(Button)findViewById(R.id.btnAddParking);
+        listView=(ListView)findViewById(R.id.listView);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -90,5 +105,37 @@ public class MapsActivity1 extends FragmentActivity implements OnMapReadyCallbac
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
     }
+    private void eventHandler(){
+        btnAddParking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MapsActivity1.this, addParking.class);
+                startActivity(intent);
+                DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+                reference.push().setValue("hello word");
+
+
+            }
+        });
+    }
+    private void initListView(){
+        String email= FirebaseAuth.getInstance().getCurrentUser().getEmail().replace('.','_');
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference(email);
+        reference.child("myParking").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
 }

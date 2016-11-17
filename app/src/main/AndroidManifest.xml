@@ -23,7 +23,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".signInActivity" />
-        <activity android:name=".mapActivity" />
         <activity android:name=".payActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -39,7 +38,8 @@
 
         <activity
             android:name=".MapsActivity1"
-            android:label="@string/title_activity_maps1"></activity>
+            android:label="@string/title_activity_maps1" />
+        <activity android:name=".addParking"></activity>
     </application>
 
 </manifest>
