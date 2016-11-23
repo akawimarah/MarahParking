@@ -17,7 +17,8 @@
         android:id="@+id/etAdress"
         android:layout_below="@+id/etDate"
         android:layout_alignEnd="@+id/etIs7enam"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:hint="@string/Address" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -26,16 +27,17 @@
         android:ems="10"
         android:id="@+id/etDate"
         android:layout_below="@+id/etIs7enam"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:hint="@string/Date" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/btnSaveParking"
-        android:layout_below="@+id/etAdress"
+        android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/etAdress" />
+        android:layout_alignEnd="@+id/rb" />
 
     <TextClock
         android:layout_width="wrap_content"
@@ -59,5 +61,13 @@
         android:layout_below="@+id/etIsShagira"
         android:layout_alignEnd="@+id/etIsShagira"
         android:layout_alignParentStart="true" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rb"
+        android:layout_above="@+id/btnSaveParking"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/etAdress" />
 
 </RelativeLayout>

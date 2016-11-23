@@ -3,8 +3,10 @@ package com.akawi.marah.marahparking;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +23,9 @@ public class addParking extends AppCompatActivity {
     private EditText etAdress;
     private TextClock textClock;
     private Button btnSaveParking;
+    private RatingBar rb;
+    DatabaseReference reference;
+
 
 
 
@@ -34,6 +39,9 @@ public class addParking extends AppCompatActivity {
         etAdress=(EditText)findViewById(R.id.etAdress);
         textClock=(TextClock)findViewById(R.id.textClock);
         btnSaveParking=(Button)findViewById(R.id.btnSaveParking);
+        rb=(RatingBar)findViewById(R.id.rb);
+        eventHandler();
+
 
 
 
@@ -64,7 +72,7 @@ public class addParking extends AppCompatActivity {
         if(isOk){
             Intent intent=new Intent(addParking.this,MapsActivity1.class);
             startActivity(intent);
-            Parking myParking=new Parking();
+            Parking1 myParking=new Parking1();
             myParking.setIsShagira(stIsShagira);
             myParking.setIs7enam(stIs7enam);
             myParking.setAdress(stAdress);
@@ -88,5 +96,13 @@ public class addParking extends AppCompatActivity {
 
 
         }
+    }
+    private  void  eventHandler(){
+        btnSaveParking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dataHandler();
+            }
+        });
     }
 }
