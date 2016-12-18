@@ -7,52 +7,53 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".logInActivity">
+    tools:context=".LogInActivity">
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
         android:id="@+id/etEmail"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:hint="@string/Email" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="@string/Email"
+        android:inputType="textEmailAddress" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
         android:id="@+id/etPassword"
-        android:hint="@string/Password"
-        android:layout_below="@+id/etEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/etEmail"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/etEmail" />
+        android:layout_below="@+id/etEmail"
+        android:ems="10"
+        android:hint="@string/Password"
+        android:inputType="textPassword" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Log In"
         android:id="@+id/btnLogIn"
-        android:layout_below="@+id/etPassword"
-        android:layout_alignParentStart="true" />
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Account"
-        android:id="@+id/btnNewAccount"
-        android:layout_below="@+id/btnLogIn"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etPassword"
+        android:text="Log In" />
 
     <Button
+        android:id="@+id/btnNewAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btnLogIn"
+        android:text="New Account" />
+
+    <Button
+        android:id="@+id/btnHelp"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Help"
-        android:id="@+id/btnHelp"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/btnNewAccount"
-        android:layout_alignParentStart="true" />
+        android:text="Help" />
 </RelativeLayout>

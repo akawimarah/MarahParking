@@ -7,67 +7,108 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.akawi.marah.marahparking.addParking">
+    tools:context=".AddParking">
 
-    <EditText
+    <CheckBox
+        android:id="@+id/cbShagira"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
-        android:ems="10"
-        android:id="@+id/etAdress"
-        android:layout_below="@+id/etDate"
-        android:layout_alignEnd="@+id/etIs7enam"
-        android:layout_alignParentStart="true"
-        android:hint="@string/Address" />
+        android:layout_alignEnd="@+id/btnAddress"
+        android:layout_alignTop="@+id/cbShagira2"
+        android:checked="false"
+        android:text="Not Vacant" />
 
     <EditText
+        android:id="@+id/etAddress2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/etDate"
-        android:layout_below="@+id/etIs7enam"
+        android:layout_alignEnd="@+id/cb7enam2"
         android:layout_alignParentStart="true"
-        android:hint="@string/Date" />
+        android:layout_below="@+id/etWhen"
+        android:ems="10"
+        android:hint="@string/Address"
+        android:inputType="textPostalAddress" />
 
     <Button
+        android:id="@+id/btnSaveParking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
-        android:id="@+id/btnSaveParking"
-        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/rb" />
+        android:layout_below="@+id/rb"
+        android:layout_toEndOf="@+id/tvAddress"
+        android:text="Save" />
 
     <TextClock
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/textClock"
-        android:layout_alignTop="@+id/etDate"
-        android:layout_toEndOf="@+id/etDate" />
-
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/etIsShagira"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/etIs7enam"
-        android:layout_below="@+id/etIsShagira"
-        android:layout_alignEnd="@+id/etIsShagira"
-        android:layout_alignParentStart="true" />
+        android:layout_alignBottom="@+id/etWhen"
+        android:layout_alignStart="@+id/btnAddress"
+        android:layout_alignTop="@+id/etWhen"
+        android:layout_toEndOf="@+id/etAddress2" />
 
     <RatingBar
+        android:id="@+id/rb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/rb"
-        android:layout_above="@+id/btnSaveParking"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/etAdress" />
+        android:layout_below="@+id/tvAddress"
+        android:layout_toStartOf="@+id/btnAddress" />
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btnAddress"
+        android:text="Address" />
+
+    <ImageButton
+        android:id="@+id/btnAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/etAddress2"
+        android:src="@android:drawable/ic_menu_mylocation" />
+
+    <CheckBox
+        android:id="@+id/cb7enam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/cbShagira"
+        android:layout_toStartOf="@+id/cb7enam2"
+        android:checked="false"
+        android:text="With Pay" />
+
+    <EditText
+        android:id="@+id/etWhen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/etAddress2"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/cb7enam"
+        android:ems="10"
+        android:hint="@string/Date"
+        android:inputType="date" />
+
+    <CheckBox
+        android:id="@+id/cbShagira2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:checked="false"
+        android:text="Vacant" />
+
+    <CheckBox
+        android:id="@+id/cb7enam2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnAddress"
+        android:layout_below="@+id/cbShagira"
+        android:checked="false"
+        android:text="WithOut Pay" />
 
 </RelativeLayout>

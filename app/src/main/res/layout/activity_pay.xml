@@ -7,50 +7,50 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.akawi.marah.marahparking.payActivity">
+    tools:context=".PayActivity">
 
     <Button
+        android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start"
-        android:id="@+id/btnStart"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/song" />
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/song"
+        android:text="Start" />
 
     <TextView
+        android:id="@+id/tvStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/tvStart"
         android:layout_below="@+id/btnStart"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="New Text" />
 
     <Button
+        android:id="@+id/btnEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="End"
-        android:id="@+id/btnEnd"
+        android:layout_alignEnd="@+id/btnStart"
+        android:layout_alignStart="@+id/btnStart"
         android:layout_below="@+id/tvStart"
         android:layout_marginTop="54dp"
-        android:layout_alignEnd="@+id/btnStart"
-        android:layout_alignStart="@+id/btnStart" />
+        android:text="End" />
 
     <TextView
+        android:id="@+id/tvEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/tvEnd"
         android:layout_below="@+id/btnEnd"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="New Text" />
 
     <ImageButton
+        android:id="@+id/song"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/song"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="45dp"
-        android:src="@android:drawable/ic_lock_silent_mode"
-        android:background="#ea6060" />
+        android:background="#ea6060"
+        android:src="@android:drawable/ic_lock_silent_mode" />
 </RelativeLayout>

@@ -16,70 +16,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * tjhez mo2shrat fe el activity
+ */
 public class signInActivity extends AppCompatActivity {
     private EditText etName, etMail,etPass1, etPass2;
     private Button btnsignIn;
     private FirebaseAuth auth;
-
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
-        etMail=(EditText)findViewById(R.id.etMail);
-       etName=(EditText)findViewById(R.id.etName);
-        etPass1=(EditText)findViewById(R.id.etPass1);
-        etPass2=(EditText)findViewById(R.id.etPass2);
-        btnsignIn=(Button)findViewById(R.id.btnSignIn);
-        auth=FirebaseAuth.getInstance();
-
-
-
-    }
-    private void dataHandler(){
-        String stMail= etMail.getText().toString();
-        String stName= etName.getText().toString();
-        String stPass1= etPass1.getText().toString();
-        String stPass2= etPass2.getText().toString();
-        boolean isok=true;
-        if (stMail.length()==0){
-            etMail.setError("wrong Email");
-            isok=false;
-        }
-        if (stName.length()==0){
-            etName.setError("wrong Name");
-            isok=false;
-        }
-        if (stPass1.length()==0){
-            etPass1.setError("wrong Password1");
-            isok=false;
-        }
-        if (stPass2.length()==0){
-            etPass2.setError("wrong Password2");
-            isok=false;
-        }
-        if (isok)
-            creatAcount(stMail, stPass1);
-
-
-
-
-
-    }
-    private void eventHandler(){
-        btnsignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Intent i = new Intent(signInActivity.this,MapsActivity1.class);
-                startActivity(i);
-                dataHandler();
-
-            }
-        });
-
-    }
     private FirebaseAuth.AuthStateListener authStateListener=new FirebaseAuth.AuthStateListener() {
 
         @Override
@@ -115,6 +58,77 @@ public class signInActivity extends AppCompatActivity {
         }
 
     };
+
+    /**
+     * t7ded el keyam bwasitat findViewById
+     * @param savedInstanceState
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sign_in);
+        etMail=(EditText)findViewById(R.id.etMail);
+       etName=(EditText)findViewById(R.id.etName);
+        etPass1=(EditText)findViewById(R.id.etPass1);
+        etPass2=(EditText)findViewById(R.id.etPass2);
+        btnsignIn=(Button)findViewById(R.id.btnSignIn);
+        auth=FirebaseAuth.getInstance();
+        eventHandler();
+
+
+
+    }
+
+    /**
+     * aist5raj fa7wa l7okol wmo3aljit el mo3tayat(fa7s kanonyet elmod5lat)
+     */
+    private void dataHandler(){
+        String stMail= etMail.getText().toString();
+        String stName= etName.getText().toString();
+        String stPass1= etPass1.getText().toString();
+        String stPass2= etPass2.getText().toString();
+        boolean isok=true;
+        if (stMail.length()==0){
+            etMail.setError("wrong Email");
+            isok=false;
+        }
+        if (stName.length()==0){
+            etName.setError("wrong Name");
+            isok=false;
+        }
+        if (stPass1.length()==0){
+            etPass1.setError("wrong Password1");
+            isok=false;
+        }
+        if (stPass2.length()==0){
+            etPass2.setError("wrong Password2");
+            isok=false;
+        }
+        if (isok)
+            creatAcount(stMail, stPass1);
+
+
+
+
+
+    }
+
+    /**
+     *  ll2zrar min ajil  mo3aljit el 7adath
+     */
+    private void eventHandler(){
+        btnsignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent i = new Intent(signInActivity.this,MapActivity.class);
+                startActivity(i);
+                dataHandler();
+
+            }
+        });
+
+    }
+
     @Override
 
     protected void onStart() {
@@ -136,6 +150,12 @@ public class signInActivity extends AppCompatActivity {
             auth.removeAuthStateListener(authStateListener);
 
     }
+
+    /**
+     * dali bti3mal new acount
+     * @param email
+     * @param passw
+     */
 
     private void creatAcount(String email, String passw) {
         auth.createUserWithEmailAndPassword(email,passw).addOnCompleteListener(signInActivity.this, new OnCompleteListener<AuthResult>() {

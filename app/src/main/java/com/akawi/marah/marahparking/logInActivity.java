@@ -18,7 +18,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class logInActivity extends AppCompatActivity {
+/**
+ * tjhez mo2shrat fe el activity
+ */
+
+public class LogInActivity extends AppCompatActivity {
     private EditText etEmail;
     private EditText etPassword;
     private Button btnLogIn;
@@ -30,6 +34,9 @@ public class logInActivity extends AppCompatActivity {
 
 
     @Override
+    /**
+     * t7ded el keyam bwasitat findViewById
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
@@ -42,9 +49,9 @@ public class logInActivity extends AppCompatActivity {
 
         eventHandler();
         if(FirebaseAuth.getInstance().getCurrentUser()!=null){
-            Intent intent=new Intent(logInActivity.this,MapsActivity1.class);
+            Intent intent=new Intent(LogInActivity.this,MapActivity.class);
             startActivity(intent);
-            finish();//btinhi el activity ele anan mawjod fyo
+            finish();//btinhi el activity ele ana mawjod fyo
         }
 
 
@@ -53,6 +60,9 @@ public class logInActivity extends AppCompatActivity {
 
     }
     private void dataHandler()
+    /**
+     * aist5raj fa7wa l7okol wmo3aljit el mo3tayat(fa7s kanonyet elmod5lat)
+     */
     {
         String stEmail=etEmail.getText().toString();
         String stPassowrd=etPassword.getText().toString();
@@ -71,10 +81,18 @@ public class logInActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     *  ll2zrar min ajil  mo3aljit el 7adath
+     */
     private void eventHandler(){
+
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent i=new Intent(LogInActivity.this,MapActivity.class);
+                startActivity(i);
                 dataHandler();
 
 
@@ -83,7 +101,7 @@ public class logInActivity extends AppCompatActivity {
         btnNewAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(logInActivity.this,signInActivity.class);
+                Intent i=new Intent(LogInActivity.this,signInActivity.class);
                 startActivity(i);
 
 
@@ -91,9 +109,17 @@ public class logInActivity extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * dalit bti3mal do5ol ll app bttlaka email wsisma
+     * aiza kan el do5ol naji7 btib3at toast"signInActivity Successful"
+     * aiza fishil el do5olbtib3at toast "signInActivity failed"
+     * @param email
+     * @param passw
+     */
     private void signIn(String email, String passw) {
 
-        auth.signInWithEmailAndPassword(email,passw).addOnCompleteListener(logInActivity.this, new OnCompleteListener<AuthResult>() {
+        auth.signInWithEmailAndPassword(email,passw).addOnCompleteListener(LogInActivity.this, new OnCompleteListener<AuthResult>() {
 
             @Override
 
@@ -103,9 +129,9 @@ public class logInActivity extends AppCompatActivity {
 
                 {
 
-                    Toast.makeText(logInActivity.this, "signInActivity Successful.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LogInActivity.this, "signInActivity Successful.", Toast.LENGTH_SHORT).show();
 
-                    Intent i=new Intent(logInActivity.this,mapActivity.class);
+                    Intent i=new Intent(LogInActivity.this,MapActivity.class);
 
                     startActivity(i);
 
@@ -117,7 +143,7 @@ public class logInActivity extends AppCompatActivity {
 
                 {
 
-                    Toast.makeText(logInActivity.this, "signInActivity failed."+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LogInActivity.this, "signInActivity failed."+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
                     task.getException().printStackTrace();
 

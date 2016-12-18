@@ -1,59 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/etIsShagiraa"
-        android:layout_gravity="center_horizontal" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/etIs7enamm"
-        android:layout_gravity="center_horizontal" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/etDatee"
-        android:hint="@string/Date1" />
-
-    <TextClock
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textClock2" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
-        android:ems="10"
-        android:id="@+id/etAddress2"
-        android:hint="@string/Address1" />
-
-    <RatingBar
-        android:layout_width="377dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/rb"
-        android:layout_gravity="center_horizontal" />
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:checked="false"
+        android:text=" Vacant " />
 
     <CheckBox
+        android:id="@+id/cbShagira"
+        android:layout_width="113dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:checked="false"
+        android:text="Not Vacant" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="130dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:checked="false"
+        android:text="Wth Pay" />
+
+    <CheckBox
+        android:id="@+id/cb7enamm"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Done"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:checked="false"
+        android:text="without Pay" />
+
+    <EditText
+        android:id="@+id/etDate"
+        android:layout_width="228dp"
+        android:layout_height="32dp"
+        android:layout_weight="0.10"
+        android:ems="10"
+        android:hint="@string/Date"
+        android:inputType="date" />
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="108dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.10" />
+
+    <EditText
+        android:id="@+id/etAddress2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:ems="10"
+        android:hint="@string/Address1"
+        android:inputType="textPostalAddress" />
+
+
+
+    <RatingBar
+        android:id="@+id/rb"
+        android:layout_width="377dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.10" />
+
+    <CheckBox
         android:id="@+id/done"
-        android:checked="false" />
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:checked="false"
+        android:text="Done" />
 
     <ImageButton
-        android:layout_width="188dp"
-        android:layout_height="wrap_content"
         android:id="@+id/btnDel"
+        android:layout_width="188dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
         android:src="@android:drawable/ic_menu_delete" />
 
 </LinearLayout>

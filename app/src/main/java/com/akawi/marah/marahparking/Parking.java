@@ -2,19 +2,22 @@ package com.akawi.marah.marahparking;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.Date;
+
+
 /**
  * Created by user on 11/23/2016.
  */
-public class Parking1 {
-    private String isShagira;// fadye aw la2
-    private String is7enam;// bmsari aw la2
-    private String adress;// el3inwan
-    private String when;// sa3it el2i3lan
-    private LatLng location;//mkanha gps
-    private int prioroty;//
-    private String id;
+public class Parking {
+    private String isShagira;// Vacant or not
+    private String is7enam;// payment or not
+    private String adress;// address
+    private Date when;// Date of announcement
+    private LatLng location;//location
+    private float prioroty;//Evaluation
+    private String id;//
 
-    public Parking1(String adress, String isShagira, String is7enam, String when, LatLng location, int prioroty, String id) {
+    public Parking(String adress, String isShagira, String is7enam, Date when, LatLng location, float prioroty, String id) {
         this.adress = adress;
         this.isShagira = isShagira;
         this.is7enam = is7enam;
@@ -23,7 +26,14 @@ public class Parking1 {
         this.prioroty = prioroty;
         this.id = id;
     }
-    public Parking1(){}
+
+    /**
+     * Constructivism virtual function(dali bina2ye aiftradye)
+     */
+    public Parking()
+    {
+
+    }
 
 
     public String getIsShagira() {
@@ -58,19 +68,19 @@ public class Parking1 {
         this.location = location;
     }
 
-    public String getWhen() {
+    public Date getWhen() {
         return when;
     }
 
-    public void setWhen(String when) {
+    public void setWhen(Date when) {
         this.when = when;
     }
 
-    public int getPrioroty() {
+    public float getPrioroty() {
         return prioroty;
     }
 
-    public void setPrioroty(int prioroty) {
+    public void setPrioroty(float prioroty) {
         this.prioroty = prioroty;
     }
 
@@ -84,7 +94,7 @@ public class Parking1 {
 
     @Override
     public String toString() {
-        return "Parking1{" +
+        return "Parking{" +
                 "isShagira='" + isShagira + '\'' +
                 ", is7enam='" + is7enam + '\'' +
                 ", adress='" + adress + '\'' +

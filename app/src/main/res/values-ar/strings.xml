@@ -9,4 +9,8 @@
     <string name="repass">اعادة كلمة السر</string>
     <string name="logOut">الخروج</string>
     <string name="settings">اعدادات</string>
+    <string name="Address">العنوان</string>
+    <string name="Address1">العنوان</string>
+    <string name="Date">التاريخ</string>
+    <string name="title_activity_maps1"></string>
 </resources>

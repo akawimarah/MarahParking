@@ -10,56 +10,56 @@
     tools:context=".signInActivity">
 
     <EditText
+        android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/etName"
-        android:hint="@string/Name"
+        android:layout_alignEnd="@+id/btnSignIn"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/btnSignIn" />
+        android:ems="10"
+        android:hint="@string/Name"
+        android:inputType="textPersonName" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
         android:id="@+id/etMail"
-        android:layout_below="@+id/etName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/etName"
-        android:hint="@string/email"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/etPass1"
-        android:layout_below="@+id/etMail"
-        android:hint="@string/password"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/etMail" />
+        android:layout_below="@+id/etName"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
 
     <EditText
+        android:id="@+id/etPass1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
+        android:layout_alignEnd="@+id/etMail"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etMail"
         android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+    <EditText
         android:id="@+id/etPass2"
-        android:layout_below="@+id/etPass1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/etPass1"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etPass1"
+        android:ems="10"
         android:hint="@string/repass"
-        android:layout_alignParentStart="true" />
+        android:inputType="textPassword" />
 
     <Button
+        android:id="@+id/btnSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In"
-        android:id="@+id/btnSignIn"
-        android:layout_below="@+id/etPass2"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etPass2"
+        android:text="log In" />
 
 </RelativeLayout>

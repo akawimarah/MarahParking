@@ -11,11 +11,18 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-public class payActivity extends AppCompatActivity {
+/**
+ * tjhez mo2shrat fe el activity
+ */
+public class PayActivity extends AppCompatActivity {
 private Button btnStart , btnEnd;
     private TextView tvStart, tvEnd;
     private ImageButton btnSong;
 
+    /**
+     * t7ded el keyam bwasitat findViewById
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +35,10 @@ private Button btnStart , btnEnd;
          eventHandler();
 
     }
+
+    /**
+     * dalit mo3aljit el 7adath
+     */
    private void eventHandler(){
        btnStart.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -36,7 +47,7 @@ private Button btnStart , btnEnd;
                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                int minute = mcurrentTime.get(Calendar.MINUTE);
                TimePickerDialog mTimePicker;
-               mTimePicker = new TimePickerDialog(payActivity.this, new TimePickerDialog.OnTimeSetListener() {
+               mTimePicker = new TimePickerDialog(PayActivity.this, new TimePickerDialog.OnTimeSetListener() {
                    @Override
                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                       tvStart.setText( selectedHour + ":" + selectedMinute);
@@ -54,7 +65,7 @@ private Button btnStart , btnEnd;
                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                int minute = mcurrentTime.get(Calendar.MINUTE);
                TimePickerDialog mTimePicker;
-               mTimePicker = new TimePickerDialog(payActivity.this, new TimePickerDialog.OnTimeSetListener() {
+               mTimePicker = new TimePickerDialog(PayActivity.this, new TimePickerDialog.OnTimeSetListener() {
                    @Override
                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                       tvEnd.setText( selectedHour + ":" + selectedMinute);

@@ -10,7 +10,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
-import android.widget.TextClock;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 /**
  * Created by user on 11/22/2016.
  */
-public class MyAdapterParking extends ArrayAdapter<Parking1> {
+public class MyAdapterParking extends ArrayAdapter<Parking> {
     private DatabaseReference reference;
     public MyAdapterParking(Context context,int resource){
         super(context,resource);
@@ -36,19 +35,22 @@ public class MyAdapterParking extends ArrayAdapter<Parking1> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_my_parking, parent, false);
-        EditText etIsShagiraa = (EditText) convertView.findViewById(R.id.etIsShagiraa);
-        EditText etDatee = (EditText) convertView.findViewById(R.id.etDatee);
+        CheckBox cbShagiraa=(CheckBox)convertView.findViewById(R.id.cbShagira); //EditText etDatee = (EditText) convertView.findViewById(R.id.etDatee);
         EditText etAddress2 = (EditText) convertView.findViewById(R.id.etAddress2);
-        EditText textClock2 = (EditText) convertView.findViewById(R.id.textClock2);
+       EditText textClock = (EditText) convertView.findViewById(R.id.textClock);
         RatingBar rb = (RatingBar) convertView.findViewById(R.id.rb);
-        EditText etIs7enamm = (EditText) convertView.findViewById(R.id.etIs7enamm);
+        CheckBox cb7enamm=(CheckBox)convertView.findViewById(R.id.cb7enamm);
         ImageButton btnDel = (ImageButton) convertView.findViewById(R.id.btnDel);
         CheckBox done = (CheckBox) convertView.findViewById(R.id.done);
-        final Parking1 myParking = getItem(position);
-        etIs7enamm.setText(myParking.getIs7enam());
-        etIsShagiraa.setText(myParking.getIsShagira());
+        EditText etDate=(EditText)convertView.findViewById(R.id.etDate);
+
+
+
+        final Parking myParking = getItem(position);
+        //etIs7enamm.setText(myParking.getIs7enam());
+        //etIsShagiraa.setText(myParking.getIsShagira());
         etAddress2.setText(myParking.getAdress());
-        etDatee.setText(myParking.getWhen());
+        etDate.setText(myParking.getWhen().toString());
         rb.setRating(myParking.getPrioroty());
 
 
@@ -68,12 +70,43 @@ public class MyAdapterParking extends ArrayAdapter<Parking1> {
                 });
             }
         });
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         done.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
             }
         });
+        cbShagiraa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        cbShagiraa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+            }
+        });
+        cb7enamm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        cb7enamm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+            }
+        });
+
  return convertView;
 
     }
