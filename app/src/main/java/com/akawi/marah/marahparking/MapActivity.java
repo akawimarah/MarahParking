@@ -95,31 +95,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
 
    
-    private void eventHandler(){    @Override
-        public void onMapReady(GoogleMap googleMap) {
-            mMap = googleMap;
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return;
-            }
+    private void eventHandler(){
 
-            mMap.setMyLocationEnabled(true);// find my location
-            // Add a marker in Sydney and move the camera
-            LatLng sydney = new LatLng(-34, 151);
-            mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
-        }
         btnAddParking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MapActivity.this, AddParking.class);
+                Intent intent=new Intent(MapActivity.this, AddParkingActivity.class);
                 startActivity(intent);
                 DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
                 reference.push().setValue("hello word");
@@ -136,7 +117,27 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
 
+        mMap.setMyLocationEnabled(true);// find my location
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+    }
 
     private void initListView(){
         String email= FirebaseAuth.getInstance().getCurrentUser().getEmail().replace('.','_');
@@ -161,8 +162,5 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     }
 
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
 
-    }
 }

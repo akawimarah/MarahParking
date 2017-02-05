@@ -37,7 +37,7 @@ public class MyAdapterParking extends ArrayAdapter<Parking> {
         convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_my_parking, parent, false);
         CheckBox cbShagiraa=(CheckBox)convertView.findViewById(R.id.cbShagira); //EditText etDatee = (EditText) convertView.findViewById(R.id.etDatee);
         EditText etAddress2 = (EditText) convertView.findViewById(R.id.etAddress2);
-       EditText textClock = (EditText) convertView.findViewById(R.id.textClock);
+      // EditText textClock = (EditText) convertView.findViewById(R.id.textClock);
         RatingBar rb = (RatingBar) convertView.findViewById(R.id.rb);
         CheckBox cb7enamm=(CheckBox)convertView.findViewById(R.id.cb7enamm);
         ImageButton btnDel = (ImageButton) convertView.findViewById(R.id.btnDel);

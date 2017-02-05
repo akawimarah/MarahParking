@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextClock;
 import android.widget.TextView;
@@ -41,7 +42,7 @@ import java.util.Locale;
 /**
  * tjhez mo2shrat fe el activity
  */
-public class AddParking extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks ,GoogleApiClient.OnConnectionFailedListener {
+public class AddParkingActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks ,GoogleApiClient.OnConnectionFailedListener {
     DatabaseReference reference;
    private CheckBox cbShagira;//Vacant or not
     private CheckBox cb7enam;// payment or not
@@ -55,7 +56,7 @@ public class AddParking extends AppCompatActivity implements GoogleApiClient.Con
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
     private TextView tvAddress;
-    private Button btnAddress;
+    private ImageButton btnAddress;
 
     @Override
     /**
@@ -74,7 +75,7 @@ public class AddParking extends AppCompatActivity implements GoogleApiClient.Con
         btnSaveParking = (Button) findViewById(R.id.btnSaveParking);
         rb = (RatingBar) findViewById(R.id.rb);
         tvAddress = (TextView) findViewById(R.id.tvAddress);
-        btnAddress = (Button) findViewById(R.id.btnAddress);
+        btnAddress = (ImageButton) findViewById(R.id.btnAddress);
         eventHandler();
         if (mGoogleApiClient == null) {
             // ATTENTION: This "addApi(AppIndex.API)"was auto-generated to implement the App Indexing API.
@@ -85,7 +86,6 @@ public class AddParking extends AppCompatActivity implements GoogleApiClient.Con
                     .addApi(LocationServices.API)
                     .addApi(AppIndex.API).build();
         }
-
 
     }
 
@@ -108,7 +108,7 @@ public class AddParking extends AppCompatActivity implements GoogleApiClient.Con
 
         }
         if (isOk) {
-            Intent i=new Intent(AddParking.this,MapActivity.class);
+            Intent i=new Intent(AddParkingActivity.this,MapActivity.class);
             startActivity(i);
             Date date = Calendar.getInstance().getTime();
             Parking myParking = new Parking();
@@ -213,7 +213,7 @@ public class AddParking extends AppCompatActivity implements GoogleApiClient.Con
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
-                "AddParking Page", // TODO: Define a title for the content shown.
+                "AddParkingActivity Page", // TODO: Define a title for the content shown.
                 // TODO: If you have web page content that matches this app activity's content,
                 // make sure this auto-generated web page URL is correct.
                 // Otherwise, set the URL to null.
@@ -231,7 +231,7 @@ public class AddParking extends AppCompatActivity implements GoogleApiClient.Con
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
-                "AddParking Page", // TODO: Define a title for the content shown.
+                "AddParkingActivity Page", // TODO: Define a title for the content shown.
                 // TODO: If you have web page content that matches this app activity's content,
                 // make sure this auto-generated web page URL is correct.
                 // Otherwise, set the URL to null.
