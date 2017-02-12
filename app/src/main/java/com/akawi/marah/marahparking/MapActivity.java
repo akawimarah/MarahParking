@@ -148,8 +148,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
               adapterParking.clear();
                 for (DataSnapshot ds:dataSnapshot.getChildren()){
                     Parking myParking=ds.getValue(Parking.class);
+                    //todo distance between my loc an parking loc
                     myParking.setId(ds.getKey());
                     adapterParking.add(myParking);
+                    LatLng sydney = new LatLng(myParking.getLocation().latitude,myParking.getLocation().longitude);
+                    mMap.addMarker(new MarkerOptions().position(sydney).title(myParking.getAdress()));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
                 }
 
             }

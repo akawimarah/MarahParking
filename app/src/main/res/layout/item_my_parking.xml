@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <CheckBox
+    <TextView
         android:id="@+id/checkBox2"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -12,15 +12,9 @@
         android:checked="false"
         android:text=" Vacant " />
 
-    <CheckBox
-        android:id="@+id/cbShagira"
-        android:layout_width="113dp"
-        android:layout_height="0dp"
-        android:layout_weight="0.10"
-        android:checked="false"
-        android:text="Not Vacant" />
 
-    <CheckBox
+
+    <TextView
         android:id="@+id/checkBox"
         android:layout_width="130dp"
         android:layout_height="0dp"
@@ -28,15 +22,9 @@
         android:checked="false"
         android:text="Wth Pay" />
 
-    <CheckBox
-        android:id="@+id/cb7enamm"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0.10"
-        android:checked="false"
-        android:text="without Pay" />
 
-    <EditText
+
+    <TextView
         android:id="@+id/etDate"
         android:layout_width="228dp"
         android:layout_height="32dp"
@@ -45,13 +33,13 @@
         android:hint="@string/Date"
         android:inputType="date" />
 
-    <TextClock
+    <TextView
         android:id="@+id/textClock"
         android:layout_width="108dp"
         android:layout_height="0dp"
         android:layout_weight="0.10" />
 
-    <EditText
+    <TextView
         android:id="@+id/etAddress2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -62,19 +50,8 @@
 
 
 
-    <RatingBar
-        android:id="@+id/rb"
-        android:layout_width="377dp"
-        android:layout_height="0dp"
-        android:layout_weight="0.10" />
 
-    <CheckBox
-        android:id="@+id/done"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0.10"
-        android:checked="false"
-        android:text="Done" />
+
 
     <ImageButton
         android:id="@+id/btnDel"

@@ -27,6 +27,7 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -110,13 +111,17 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
         if (isOk) {
             Intent i=new Intent(AddParkingActivity.this,MapActivity.class);
             startActivity(i);
-            Date date = Calendar.getInstance().getTime();
+            Date date = Calendar.getInstance().getTime();//get the current time (date and time)
             Parking myParking = new Parking();
             //myParking.setIsShagira(stIsShagira);
             //myParking.setIs7enam(stIs7enam);
-            myParking.setAdress(stAddress);
+            //// TODO: 2/12/2017  get cuurent gps location and address
+            myParking.setLocation(new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude()));
+            myParking.setAdress(etAddress.getText().toString());
             myParking.setWhen(date);
             myParking.setPrioroty(rate);
+            myParking.setIs7enam(cb7enam.isChecked()+"");
+            myParking.setIsShagira(cbShagira2.isChecked()+"");
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
             String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
             email=email.replace(".","_");
@@ -136,12 +141,12 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
 
         }
     }
-
+    /**
+     * ll2zrar min ajil  mo3aljit el 7adath
+     *
+     */
     private void eventHandler() {
-        /**
-         * ll2zrar min ajil  mo3aljit el 7adath
-         *
-         */
+        
         btnSaveParking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -247,6 +252,7 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
         if (mLastLocation != null) {
+
 //            etAdress.setText(String.valueOf(mLastLocation.getLatitude()));
 //            etAdress.append(","+String.valueOf(mLastLocation.getLongitude()));
 

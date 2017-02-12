@@ -52,6 +52,7 @@ public class MyAdapterParking extends ArrayAdapter<Parking> {
         etAddress2.setText(myParking.getAdress());
         etDate.setText(myParking.getWhen().toString());
         rb.setRating(myParking.getPrioroty());
+        cbShagiraa.setText(myParking.getIsShagira());
 
 
         btnDel.setOnClickListener(new View.OnClickListener() {
