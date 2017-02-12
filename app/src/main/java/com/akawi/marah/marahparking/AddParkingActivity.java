@@ -45,11 +45,8 @@ import java.util.Locale;
  */
 public class AddParkingActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks ,GoogleApiClient.OnConnectionFailedListener {
     DatabaseReference reference;
-   private CheckBox cbShagira;//Vacant or not
     private CheckBox cb7enam;// payment or not
     private CheckBox cbShagira2;//Vacant or not
-    private CheckBox cb7enam2;// payment or not
-    private EditText etWhen;//Date of announcement
     private EditText etAddress;//location
     private TextClock textClock;//Promotional clock
     private Button btnSaveParking;
@@ -65,11 +62,9 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_parking);
-        cbShagira = (CheckBox) findViewById(R.id.cbShagira);
+
         cb7enam = (CheckBox) findViewById(R.id.cb7enam);
         cbShagira2 = (CheckBox) findViewById(R.id.cbShagira2);
-        cb7enam2 = (CheckBox) findViewById(R.id.cb7enam2);
-        etWhen = (EditText) findViewById(R.id.etWhen);
         etAddress = (EditText) findViewById(R.id.etAddress2);
         textClock = (TextClock) findViewById(R.id.textClock);
         btnSaveParking = (Button) findViewById(R.id.btnSaveParking);
@@ -92,14 +87,11 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
         /**
          * aist5raj fa7wa l7okol wmo3aljit el mo3tayat(fa7s kanonyet elmod5lat)
          */
-        String stDate = etWhen.getText().toString();
+
         String stAddress = etAddress.getText().toString();
         boolean isOk = true;
 
-        if (stDate.length() == 0) {
-            etWhen.setError("wrong Date");
-            isOk = false;
-        }
+
         if (stAddress.length() == 0) {
             etAddress.setError("wrong Address");
             isOk = false;
@@ -167,20 +159,7 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
 
             }
         });
-        cbShagira.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
-        cbShagira.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
-
-
-            }
-        });
         cbShagira2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -193,18 +172,7 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
 
             }
         });
-        cb7enam2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
-        cb7enam2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
-            }
-        });
     }
 
     protected void onStart() {

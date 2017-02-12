@@ -27,7 +27,6 @@ public class LogInActivity extends AppCompatActivity {
     private EditText etPassword;
     private Button btnLogIn;
     private Button btnNewAccount;
-    private Button btnHelp;
     private FirebaseAuth auth;
 
 
@@ -44,7 +43,6 @@ public class LogInActivity extends AppCompatActivity {
         etPassword=(EditText)findViewById(R.id.etPassword);
         btnLogIn=(Button) findViewById(R.id.btnLogIn);
        btnNewAccount=(Button) findViewById(R.id.btnNewAccount);
-        btnHelp=(Button)findViewById(R.id.btnHelp);
         auth= FirebaseAuth.getInstance();
 
         eventHandler();
