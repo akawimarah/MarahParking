@@ -14,16 +14,15 @@ public class Parking {
     private String adress;// address
     private Date when;// Date of announcement
     private LatLng location;//location
-    private float prioroty;//Evaluation
+
     private String id;//
 
-    public Parking(String adress, String isShagira, String is7enam, Date when, LatLng location, float prioroty, String id) {
+    public Parking(String adress, String isShagira, String is7enam, Date when, LatLng location , String id) {
         this.adress = adress;
         this.isShagira = isShagira;
         this.is7enam = is7enam;
         this.when = when;
         this.location = location;
-        this.prioroty = prioroty;
         this.id = id;
     }
 
@@ -76,13 +75,6 @@ public class Parking {
         this.when = when;
     }
 
-    public float getPrioroty() {
-        return prioroty;
-    }
-
-    public void setPrioroty(float prioroty) {
-        this.prioroty = prioroty;
-    }
 
     public String getId() {
         return id;
@@ -100,7 +92,6 @@ public class Parking {
                 ", adress='" + adress + '\'' +
                 ", when='" + when + '\'' +
                 ", location=" + location +
-                ", prioroty=" + prioroty +
                 ", id='" + id + '\'' +
                 '}';
     }

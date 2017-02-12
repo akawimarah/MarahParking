@@ -35,27 +35,19 @@ public class MyAdapterParking extends ArrayAdapter<Parking> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_my_parking, parent, false);
-        CheckBox cbShagiraa=(CheckBox)convertView.findViewById(R.id.cbShagira); //EditText etDatee = (EditText) convertView.findViewById(R.id.etDatee);
-        EditText etAddress2 = (EditText) convertView.findViewById(R.id.etAddress2);
+        CheckBox ishagira=(CheckBox)convertView.findViewById(R.id.ishagira); //EditText etDatee = (EditText) convertView.findViewById(R.id.etDatee);
       // EditText textClock = (EditText) convertView.findViewById(R.id.textClock);
-        RatingBar rb = (RatingBar) convertView.findViewById(R.id.rb);
-        CheckBox cb7enamm=(CheckBox)convertView.findViewById(R.id.cb7enamm);
-        ImageButton btnDel = (ImageButton) convertView.findViewById(R.id.btnDel);
-        CheckBox done = (CheckBox) convertView.findViewById(R.id.done);
-        EditText etDate=(EditText)convertView.findViewById(R.id.etDate);
-
+        CheckBox i7enam=(CheckBox)convertView.findViewById(R.id.i7enam);
+        ImageButton idel = (ImageButton) convertView.findViewById(R.id.idel);
 
 
         final Parking myParking = getItem(position);
         //etIs7enamm.setText(myParking.getIs7enam());
         //etIsShagiraa.setText(myParking.getIsShagira());
-        etAddress2.setText(myParking.getAdress());
-        etDate.setText(myParking.getWhen().toString());
-        rb.setRating(myParking.getPrioroty());
-        cbShagiraa.setText(myParking.getIsShagira());
+       ishagira.setText(myParking.getIsShagira());
 
 
-        btnDel.setOnClickListener(new View.OnClickListener() {
+       idel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 reference.child(myParking.getId()).removeValue(new DatabaseReference.CompletionListener() {
@@ -71,37 +63,26 @@ public class MyAdapterParking extends ArrayAdapter<Parking> {
                 });
             }
         });
-        done.setOnClickListener(new View.OnClickListener() {
+
+        ishagira.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
-        done.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+       ishagira.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
             }
         });
-        cbShagiraa.setOnClickListener(new View.OnClickListener() {
+        i7enam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
-        cbShagiraa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
-            }
-        });
-        cb7enamm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        cb7enamm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        i7enam.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 

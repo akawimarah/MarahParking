@@ -53,7 +53,6 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
     private EditText etAddress;//location
     private TextClock textClock;//Promotional clock
     private Button btnSaveParking;
-    private RatingBar rb;//Evaluation
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
     private TextView tvAddress;
@@ -74,7 +73,6 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
         etAddress = (EditText) findViewById(R.id.etAddress2);
         textClock = (TextClock) findViewById(R.id.textClock);
         btnSaveParking = (Button) findViewById(R.id.btnSaveParking);
-        rb = (RatingBar) findViewById(R.id.rb);
         tvAddress = (TextView) findViewById(R.id.tvAddress);
         btnAddress = (ImageButton) findViewById(R.id.btnAddress);
         eventHandler();
@@ -96,7 +94,6 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
          */
         String stDate = etWhen.getText().toString();
         String stAddress = etAddress.getText().toString();
-        float rate = rb.getRating();
         boolean isOk = true;
 
         if (stDate.length() == 0) {
@@ -119,7 +116,6 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
             myParking.setLocation(new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude()));
             myParking.setAdress(etAddress.getText().toString());
             myParking.setWhen(date);
-            myParking.setPrioroty(rate);
             myParking.setIs7enam(cb7enam.isChecked()+"");
             myParking.setIsShagira(cbShagira2.isChecked()+"");
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
