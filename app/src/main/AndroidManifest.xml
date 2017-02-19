@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signInActivity" />
+        <activity android:name=".signUpActivity" />
         <activity android:name=".PayActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

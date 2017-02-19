@@ -13,18 +13,14 @@ public class Parking {
     private String is7enam;// payment or not
     private String adress;// address
     private Date when;// Date of announcement
-    private LatLng location;//location
+    private double lat;//location
+    private double lng;//location
+    private String owner;
+
 
     private String id;//
 
-    public Parking(String adress, String isShagira, String is7enam, Date when, LatLng location , String id) {
-        this.adress = adress;
-        this.isShagira = isShagira;
-        this.is7enam = is7enam;
-        this.when = when;
-        this.location = location;
-        this.id = id;
-    }
+
 
     /**
      * Constructivism virtual function(dali bina2ye aiftradye)
@@ -34,6 +30,29 @@ public class Parking {
 
     }
 
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
 
     public String getIsShagira() {
         return isShagira;
@@ -59,13 +78,9 @@ public class Parking {
         this.adress = adress;
     }
 
-    public LatLng getLocation() {
-        return location;
-    }
 
-    public void setLocation(LatLng location) {
-        this.location = location;
-    }
+
+
 
     public Date getWhen() {
         return when;
@@ -91,7 +106,6 @@ public class Parking {
                 ", is7enam='" + is7enam + '\'' +
                 ", adress='" + adress + '\'' +
                 ", when='" + when + '\'' +
-                ", location=" + location +
                 ", id='" + id + '\'' +
                 '}';
     }

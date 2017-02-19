@@ -10,7 +10,7 @@
     tools:context=".AddParkingActivity">
 
     <EditText
-        android:id="@+id/etAddress2"
+        android:id="@+id/etAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -47,8 +47,8 @@
         android:id="@+id/btnAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/etAddress2"
-        android:layout_toEndOf="@+id/etAddress2"
+        android:layout_alignBottom="@+id/etAddress"
+        android:layout_toEndOf="@+id/etAddress"
         android:src="@android:drawable/ic_menu_mylocation" />
 
     <CheckBox

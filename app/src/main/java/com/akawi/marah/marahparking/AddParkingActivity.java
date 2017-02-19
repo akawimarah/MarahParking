@@ -17,7 +17,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RatingBar;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,7 +46,7 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
     DatabaseReference reference;
     private CheckBox cb7enam;// payment or not
     private CheckBox cbShagira2;//Vacant or not
-    private EditText etAddress;//location
+    private EditText etAddress;//address
     private TextClock textClock;//Promotional clock
     private Button btnSaveParking;
     private GoogleApiClient mGoogleApiClient;
@@ -62,10 +61,9 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_parking);
-
         cb7enam = (CheckBox) findViewById(R.id.cb7enam);
         cbShagira2 = (CheckBox) findViewById(R.id.cbShagira2);
-        etAddress = (EditText) findViewById(R.id.etAddress2);
+        etAddress = (EditText) findViewById(R.id.etAddress);
         textClock = (TextClock) findViewById(R.id.textClock);
         btnSaveParking = (Button) findViewById(R.id.btnSaveParking);
         tvAddress = (TextView) findViewById(R.id.tvAddress);
@@ -82,20 +80,15 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
         }
 
     }
-
+    /**
+     * aist5raj fa7wa l7okol wmo3aljit el mo3tayat(fa7s kanonyet elmod5lat)
+     */
     private void dataHandler() {
-        /**
-         * aist5raj fa7wa l7okol wmo3aljit el mo3tayat(fa7s kanonyet elmod5lat)
-         */
-
         String stAddress = etAddress.getText().toString();
         boolean isOk = true;
-
-
         if (stAddress.length() == 0) {
             etAddress.setError("wrong Address");
             isOk = false;
-
         }
         if (isOk) {
             Intent i=new Intent(AddParkingActivity.this,MapActivity.class);
@@ -105,7 +98,8 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
             //myParking.setIsShagira(stIsShagira);
             //myParking.setIs7enam(stIs7enam);
             //// TODO: 2/12/2017  get cuurent gps location and address
-            myParking.setLocation(new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude()));
+            myParking.setLat(mLastLocation.getLatitude());
+            myParking.setLng(mLastLocation.getLongitude());
             myParking.setAdress(etAddress.getText().toString());
             myParking.setWhen(date);
             myParking.setIs7enam(cb7enam.isChecked()+"");
@@ -113,7 +107,8 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
             String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
             email=email.replace(".","_");
-            reference.child(email).child("myParking").push().setValue(myParking, new DatabaseReference.CompletionListener() {
+            myParking.setOwner(email);
+            reference.child("Parkings").push().setValue(myParking, new DatabaseReference.CompletionListener() {
                 @Override
                 public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                     if (databaseError == null) {
@@ -251,17 +246,12 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
 
     }
 
-
-
-
     @Override
     public void onConnectionSuspended(int i) {
-
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-
 }

@@ -19,11 +19,12 @@ import com.google.firebase.auth.FirebaseUser;
 /**
  * tjhez mo2shrat fe el activity
  */
-public class signInActivity extends AppCompatActivity {
+public class signUpActivity extends AppCompatActivity {
     private EditText etName, etMail,etPass1, etPass2;
     private Button btnsignIn;
     private FirebaseAuth auth;
-    private FirebaseAuth.AuthStateListener authStateListener=new FirebaseAuth.AuthStateListener() {
+    private FirebaseAuth.AuthStateListener authStateListener=new FirebaseAuth.AuthStateListener()//?
+    {
 
         @Override
 
@@ -39,7 +40,7 @@ public class signInActivity extends AppCompatActivity {
 
                 //user is signed in
 
-                Toast.makeText(signInActivity.this, "user is signed in.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(signUpActivity.this, "user is signed in.", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -50,7 +51,7 @@ public class signInActivity extends AppCompatActivity {
 
                 //user signed out
 
-                Toast.makeText(signInActivity.this, "user signed out.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(signUpActivity.this, "user signed out.", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -60,7 +61,7 @@ public class signInActivity extends AppCompatActivity {
     };
 
     /**
-     * t7ded el keyam bwasitat findViewById
+     * t7ded el keyam bwasitat findViewById fe dalit onCreate
      * @param savedInstanceState
      */
     @Override
@@ -72,23 +73,21 @@ public class signInActivity extends AppCompatActivity {
         etPass1=(EditText)findViewById(R.id.etPass1);
         etPass2=(EditText)findViewById(R.id.etPass2);
         btnsignIn=(Button)findViewById(R.id.btnSignIn);
-        auth=FirebaseAuth.getInstance();
-        eventHandler();
-
-
-
+        auth=FirebaseAuth.getInstance();//?
+        eventHandler();// aistd3a2 ldalit eventHandler (sho sbab el aistd3a2)
     }
 
     /**
      * aist5raj fa7wa l7okol wmo3aljit el mo3tayat(fa7s kanonyet elmod5lat)
      */
     private void dataHandler(){
-        String stMail= etMail.getText().toString();
+        String stMail= etMail.getText().toString();//aist5raj fa7wa l7okol wmo3aljit el mo3tayat
         String stName= etName.getText().toString();
         String stPass1= etPass1.getText().toString();
         String stPass2= etPass2.getText().toString();
         boolean isok=true;
-        if (stMail.length()==0){
+        if (stMail.length()==0)// fa7s kanonyet elmod5lat
+        {
             etMail.setError("wrong Email");
             isok=false;
         }
@@ -105,10 +104,7 @@ public class signInActivity extends AppCompatActivity {
             isok=false;
         }
         if (isok)
-            creatAcount(stMail, stPass1);
-
-
-
+            creatAcount(stMail, stPass1);// aistd3a2 dalit creatAcount aiza kant kanonyet el mod5lat mola2mi ytim bina2 acount bil app
 
 
     }
@@ -120,14 +116,16 @@ public class signInActivity extends AppCompatActivity {
         btnsignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent i = new Intent(signInActivity.this,MapActivity.class);
-                startActivity(i);
-                dataHandler();
+               Intent i = new Intent(signUpActivity.this,MapActivity.class);// ynt2il min lshashi signup llshashi map
+                startActivity(i);//?
+                dataHandler();// aistd3a2 ldalit dataHandler ( sho lsbab)
 
             }
         });
 
     }
+
+
 
     @Override
 
@@ -152,25 +150,25 @@ public class signInActivity extends AppCompatActivity {
     }
 
     /**
-     * dali bti3mal new acount
+     * dali bti3mal new acount bttla2a email w pass
      * @param email
      * @param passw
      */
 
     private void creatAcount(String email, String passw) {
-        auth.createUserWithEmailAndPassword(email,passw).addOnCompleteListener(signInActivity.this, new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(email,passw).addOnCompleteListener(signUpActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful())
+                if(task.isSuccessful())// aiza bna2 el acunt niji7
                 {
-                    Toast.makeText(signInActivity.this, "Authentication Successful.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(signUpActivity.this, "Authentication Successful.", Toast.LENGTH_SHORT).show();// btib3at toast aino l3malye nj7at
                     //updateUserProfile(task.getResult().getUser());
-                    finish();
+                    finish();//btinhi el activity ele ana mawjod fyo
                 }
-                else
+                else// aiza bina2 el acount fishil
                 {
-                    Toast.makeText(signInActivity.this, "Authentication failed."+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                    task.getException().printStackTrace();
+                    Toast.makeText(signUpActivity.this, "Authentication failed."+task.getException().getMessage(),Toast.LENGTH_SHORT).show();//  btb3at toast
+                    task.getException().printStackTrace();// sbab lfsahsal fe bna2 acount
                 }
             }
         });

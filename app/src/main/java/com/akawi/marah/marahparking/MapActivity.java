@@ -48,9 +48,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         listView = (ListView) findViewById(R.id.listView);
         adapterParking = new MyAdapterParking(this, R.layout.item_my_parking);
         listView.setAdapter(adapterParking);
-        eventHandler();
+        eventHandler();// astid3a1 ldalit eventHandler?
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.(el7osol 3la supportMapFargment wtlaki tnbeh lma l5areta jahzi
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -102,8 +102,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             public void onClick(View view) {
                 Intent intent=new Intent(MapActivity.this, AddParkingActivity.class);
                 startActivity(intent);
-                DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
-                reference.push().setValue("hello word");
+//                DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+//                reference.push().setValue("hello word");
 
             }
         });
@@ -133,16 +133,17 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         mMap.setMyLocationEnabled(true);// find my location
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng danon = new LatLng(32.9937, 35.1534);
+        mMap.addMarker(new MarkerOptions().position(danon).title("Marker in danon"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(danon,12));
 
     }
 
     private void initListView(){
-        String email= FirebaseAuth.getInstance().getCurrentUser().getEmail().replace('.','_');
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference(email);
-        reference.child("myParking").addValueEventListener(new ValueEventListener() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        email=email.replace(".","_");
+        reference.child("Parkings").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
               adapterParking.clear();
@@ -151,9 +152,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     //todo distance between my loc an parking loc
                     myParking.setId(ds.getKey());
                     adapterParking.add(myParking);
-                    LatLng sydney = new LatLng(myParking.getLocation().latitude,myParking.getLocation().longitude);
-                    mMap.addMarker(new MarkerOptions().position(sydney).title(myParking.getAdress()));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+                    LatLng parkLoc = new LatLng(myParking.getLat(),myParking.getLng());
+                    mMap.addMarker(new MarkerOptions().position(parkLoc).title(myParking.getAdress()));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(parkLoc,12));
+
                 }
 
             }

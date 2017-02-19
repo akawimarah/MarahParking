@@ -23,13 +23,11 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 
 public class LogInActivity extends AppCompatActivity {
-    private EditText etEmail;
-    private EditText etPassword;
+    private EditText etEmail;//  email
+    private EditText etPassword;//sisma
     private Button btnLogIn;
     private Button btnNewAccount;
-    private FirebaseAuth auth;
-
-
+    private FirebaseAuth auth;//?
 
 
     @Override
@@ -43,29 +41,29 @@ public class LogInActivity extends AppCompatActivity {
         etPassword=(EditText)findViewById(R.id.etPassword);
         btnLogIn=(Button) findViewById(R.id.btnLogIn);
        btnNewAccount=(Button) findViewById(R.id.btnNewAccount);
-        auth= FirebaseAuth.getInstance();
-
+        auth= FirebaseAuth.getInstance();//?
+        /**
+         * dalit mo3aljit l7adth ll2zrar
+         */
         eventHandler();
-        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
-            Intent intent=new Intent(LogInActivity.this,MapActivity.class);
+
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null)//?
+        {
+            Intent intent=new Intent(LogInActivity.this,MapActivity.class);// ainti2al min lshashi login llshashi map
             startActivity(intent);
             finish();//btinhi el activity ele ana mawjod fyo
         }
-
-
-
-
-
     }
-    private void dataHandler()
     /**
      * aist5raj fa7wa l7okol wmo3aljit el mo3tayat(fa7s kanonyet elmod5lat)
      */
+    private void dataHandler()
+
     {
-        String stEmail=etEmail.getText().toString();
-        String stPassowrd=etPassword.getText().toString();
+        String stEmail=etEmail.getText().toString();// aist5raj fa7wa l7okol
+        String stPassowrd=etPassword.getText().toString();//
         boolean isok=true;
-        if(stEmail.length()==0){
+        if(stEmail.length()==0){//fa7s tol fa7wa el 7okol aiza 0 btraji3 nas wla yatim ldo5ol ll app
             etEmail.setError("wrong Email");
             isok=false;
         }
@@ -74,9 +72,7 @@ public class LogInActivity extends AppCompatActivity {
             isok=false;
         }
         if(isok)
-            signIn(stEmail,stPassowrd);
-
-
+            signIn(stEmail,stPassowrd);//aistd3a2 lldali signIn
 
     }
 
@@ -89,9 +85,9 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i=new Intent(LogInActivity.this,MapActivity.class);
+                Intent i=new Intent(LogInActivity.this,MapActivity.class);// bint2il min lshashi login llshashi map
                 startActivity(i);
-                dataHandler();
+                dataHandler();// aistd3a2 dalit dataHandler
 
 
             }
@@ -99,7 +95,7 @@ public class LogInActivity extends AppCompatActivity {
         btnNewAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(LogInActivity.this,signInActivity.class);
+                Intent i=new Intent(LogInActivity.this,signUpActivity.class);//bint2il min lshashi login llshashi signUp
                 startActivity(i);
 
 
@@ -109,9 +105,9 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     /**
-     * dalit bti3mal do5ol ll app bttlaka email wsisma
-     * aiza kan el do5ol naji7 btib3at toast"signInActivity Successful"
-     * aiza fishil el do5olbtib3at toast "signInActivity failed"
+     * dalit bti3mal do5ol ll app bttlaka email wsisma.
+     * aiza kan el do5ol naji7 btib3at toast"signUpActivity Successful"
+     * aiza fishil el do5ol btib3at toast "signUpActivity failed"
      * @param email
      * @param passw
      */
@@ -123,27 +119,27 @@ public class LogInActivity extends AppCompatActivity {
 
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if(task.isSuccessful())
+                if(task.isSuccessful())//aiza kan el do5ol naji7 btib3at toast"signUpActivity Successful" wbtint12il min elshashi login llshashi map
 
                 {
 
-                    Toast.makeText(LogInActivity.this, "signInActivity Successful.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LogInActivity.this, "signUpActivity Successful.", Toast.LENGTH_SHORT).show();
 
-                    Intent i=new Intent(LogInActivity.this,MapActivity.class);
+                    Intent i=new Intent(LogInActivity.this,MapActivity.class);//wbtint12il min elshashi login llshashi map
 
                     startActivity(i);
 
-                    finish();
+                    finish();//btinhi el activity ele ana mawjod fyo
 
                 }
 
-                else
+                else//aiza fishil el do5ol btib3at toast "signUpActivity failed"
 
                 {
 
-                    Toast.makeText(LogInActivity.this, "signInActivity failed."+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LogInActivity.this, "signUpActivity failed."+task.getException().getMessage(), Toast.LENGTH_SHORT).show();//aiza fishil el do5ol btib3at toast "signUpActivity failed"
 
-                    task.getException().printStackTrace();
+                    task.getException().printStackTrace();// bta3ti sbab lfashal
 
                 }
 
@@ -152,8 +148,6 @@ public class LogInActivity extends AppCompatActivity {
         });
 
     }
-
-
 
 
 }

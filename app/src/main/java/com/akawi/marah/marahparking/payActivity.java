@@ -38,6 +38,7 @@ private Button btnStart , btnEnd;
 
     /**
      * dalit mo3aljit el 7adath
+     * dialog llsa3a
      */
    private void eventHandler(){
        btnStart.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +59,9 @@ private Button btnStart , btnEnd;
 
            }
        });
+       /**
+        * dialog llsa3a
+        */
       btnEnd.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
