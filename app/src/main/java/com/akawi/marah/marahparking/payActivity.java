@@ -21,18 +21,19 @@ private Button btnStart , btnEnd;
 
     /**
      * t7ded el keyam bwasitat findViewById
+     * oncreate he awal 3malye tonafaz tlka2iyan(Called when the activity is first created)
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pay);
+        setContentView(R.layout.activity_pay);//trbot ben el xml wil java
         btnStart=(Button)findViewById(R.id.btnStart);
         btnEnd=(Button)findViewById(R.id.btnEnd);
         tvStart=(TextView)findViewById(R.id.tvStart);
         tvEnd=(TextView)findViewById(R.id.tvEnd);
         btnSong =(ImageButton)findViewById(R.id.song);
-         eventHandler();
+         eventHandler();// aistd3a2 ldalit eventHandler 3shan ni2dar nista3mil ldali
 
     }
 

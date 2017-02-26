@@ -19,11 +19,11 @@ import com.google.firebase.database.FirebaseDatabase;
  * Created by user on 11/22/2016.
  */
 public class MyAdapterParking extends ArrayAdapter<Parking> {
-    private DatabaseReference reference;//?
+    private DatabaseReference reference;//mo2ashir l3inwan ka3dit lbyanat fe el firebase
     public MyAdapterParking(Context context,int resource){
         super(context,resource);
-        String email= FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        email=email.replace(".","_");//?
+        String email= FirebaseAuth.getInstance().getCurrentUser().getEmail();// aist5raj el email
+        email=email.replace(".","_");//asma2 el jothor fe ka3dit lbyanat binfa3ish ti7we romoz ma3da( _)
         reference= FirebaseDatabase.getInstance().getReference(email).child("myParking");
     }
 
@@ -34,9 +34,8 @@ public class MyAdapterParking extends ArrayAdapter<Parking> {
         TextView itextclock=(TextView) convertView.findViewById(R.id.itextclock);
        TextView i7enam=(TextView) convertView.findViewById(R.id.i7enam);
         TextView iAddress=(TextView)convertView.findViewById(R.id.etAddress);
-
         ImageButton idel = (ImageButton) convertView.findViewById(R.id.idel);
-        final Parking myParking = getItem(position);
+        final Parking myParking = getItem(position);//
         if(myParking.getIsShagira().equals("true"))
                 ishagira.setText("Vacant");
         else
@@ -45,9 +44,8 @@ public class MyAdapterParking extends ArrayAdapter<Parking> {
             i7enam.setText("with pay");
         else
         i7enam.setText("without pay");
-
-        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        email=email.replace(".","_");
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();// aist5raj el email
+        email=email.replace(".","_");//asma2 e; jothor fe ka3dit lbyanat binfa3ish ti7we romoz ma3da(_)
         if(!email.equals(myParking.getOwner()))
             idel.setVisibility(View.GONE);
        else {

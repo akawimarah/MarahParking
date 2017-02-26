@@ -43,14 +43,14 @@ import java.util.Locale;
  * tjhez mo2shrat fe el activity
  */
 public class AddParkingActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks ,GoogleApiClient.OnConnectionFailedListener {
-    DatabaseReference reference;
+    DatabaseReference reference;// mo2ashir l3inwan ka3dit lbyanat fe el firebase
     private CheckBox cb7enam;// payment or not
     private CheckBox cbShagira2;//Vacant or not
     private EditText etAddress;//address
     private TextClock textClock;//Promotional clock
     private Button btnSaveParking;
-    private GoogleApiClient mGoogleApiClient;
-    private Location mLastLocation;
+    private GoogleApiClient mGoogleApiClient;//
+    private Location mLastLocation;//
     private TextView tvAddress;
     private ImageButton btnAddress;
 
@@ -58,9 +58,10 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
     /**
      * t7ded el keyam bwasitat findViewById
      */
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)//he awal 3malye tonafaz tlka2iyan(Called when the activity is first created)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_parking);
+        setContentView(R.layout.activity_add_parking);//trbot ben el xml wil java
         cb7enam = (CheckBox) findViewById(R.id.cb7enam);
         cbShagira2 = (CheckBox) findViewById(R.id.cbShagira2);
         etAddress = (EditText) findViewById(R.id.etAddress);
@@ -68,15 +69,16 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
         btnSaveParking = (Button) findViewById(R.id.btnSaveParking);
         tvAddress = (TextView) findViewById(R.id.tvAddress);
         btnAddress = (ImageButton) findViewById(R.id.btnAddress);
-        eventHandler();
-        if (mGoogleApiClient == null) {
+        eventHandler();// aistd3a2 ldalit eventHandler 3shan ni2dar nista3mil ldali
+        if (mGoogleApiClient == null)//
+        {
             // ATTENTION: This "addApi(AppIndex.API)"was auto-generated to implement the App Indexing API.
             // See https://g.co/AppIndexing/AndroidStudio for more information.
-            mGoogleApiClient = new GoogleApiClient.Builder(this)
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    .addApi(LocationServices.API)
-                    .addApi(AppIndex.API).build();
+            mGoogleApiClient = new GoogleApiClient.Builder(this)//
+                    .addConnectionCallbacks(this)//
+                    .addOnConnectionFailedListener(this)//
+                    .addApi(LocationServices.API)//
+                    .addApi(AppIndex.API).build();//
         }
 
     }
@@ -84,33 +86,36 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
      * aist5raj fa7wa l7okol wmo3aljit el mo3tayat(fa7s kanonyet elmod5lat)
      */
     private void dataHandler() {
-        String stAddress = etAddress.getText().toString();
-        boolean isOk = true;
-        if (stAddress.length() == 0) {
+        String stAddress = etAddress.getText().toString();//aist5raj fa7wa l7okol
+        boolean isOk = true;//mot3'yer min no3 boolean
+        if (stAddress.length() == 0)//fa7s kanonyet elmod5lat
+        {
             etAddress.setError("wrong Address");
             isOk = false;
         }
         if (isOk) {
-            Intent i=new Intent(AddParkingActivity.this,MapActivity.class);
-            startActivity(i);
+            Intent i=new Intent(AddParkingActivity.this,MapActivity.class);// ainti2al min shashit el add lshashit el map
+            startActivity(i);// tsh3'el activity tani bwasitit el intent
             Date date = Calendar.getInstance().getTime();//get the current time (date and time)
-            Parking myParking = new Parking();
+            Parking myParking = new Parking();// bina2 ka2in min fi2it parking
             //myParking.setIsShagira(stIsShagira);
             //myParking.setIs7enam(stIs7enam);
             //// TODO: 2/12/2017  get cuurent gps location and address
-            myParking.setLat(mLastLocation.getLatitude());
-            myParking.setLng(mLastLocation.getLongitude());
-            myParking.setAdress(etAddress.getText().toString());
-            myParking.setWhen(date);
-            myParking.setIs7enam(cb7enam.isChecked()+"");
-            myParking.setIsShagira(cbShagira2.isChecked()+"");
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-            String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-            email=email.replace(".","_");
-            myParking.setOwner(email);
-            reference.child("Parkings").push().setValue(myParking, new DatabaseReference.CompletionListener() {
+            myParking.setLat(mLastLocation.getLatitude());//
+            myParking.setLng(mLastLocation.getLongitude());//
+            myParking.setAdress(etAddress.getText().toString());//
+            myParking.setWhen(date);//
+            myParking.setIs7enam(cb7enam.isChecked()+"");//
+            myParking.setIsShagira(cbShagira2.isChecked()+"");//
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference();//
+            String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();//aist5raj el email
+            email=email.replace(".","_");// t7wel el (.) la (_) l2ano asma2 ljozor fe ka3dit el byanat la yomkin an t7we romoz ma 3da (_)
+            myParking.setOwner(email);//
+            reference.child("Parkings").push().setValue(myParking, new DatabaseReference.CompletionListener()// mo2ashir l3inwan ka3dit el byanat l parkings ( push ll2idafi)(child btzed aibn lmbna el mo3tyat)
+            {
                 @Override
-                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference)//
+                {
                     if (databaseError == null) {
                         Toast.makeText(getBaseContext(), "save ok", Toast.LENGTH_LONG).show();
 
@@ -126,7 +131,8 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
     }
     /**
      * ll2zrar min ajil  mo3aljit el 7adath
-     *
+     *dalit onClick lrdod lfi3il
+     * el listener  l7ifiz el kiyam bil firebase
      */
     private void eventHandler() {
         
@@ -170,8 +176,9 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
 
     }
 
-    protected void onStart() {
-        mGoogleApiClient.connect();
+    protected void onStart()// dali tab3a ll activity (Called when the activity is becoming visible to the user)
+        {
+        mGoogleApiClient.connect();//
         super.onStart();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -185,10 +192,11 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
                 // TODO: Make sure this auto-generated app URL is correct.
                 Uri.parse("android-app://com.akawi.marah.marahparking/http/host/path")
         );
-        AppIndex.AppIndexApi.start(mGoogleApiClient, viewAction);
+        AppIndex.AppIndexApi.start(mGoogleApiClient, viewAction);//
     }
 
-    protected void onStop() {
+    protected void onStop()// dali tab3a ll activity (Called when the activity is no longer visible to the user)
+    {
         mGoogleApiClient.disconnect();
         super.onStop();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -203,30 +211,33 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
                 // TODO: Make sure this auto-generated app URL is correct.
                 Uri.parse("android-app://com.akawi.marah.marahparking/http/host/path")
         );
-        AppIndex.AppIndexApi.end(mGoogleApiClient, viewAction);
+        AppIndex.AppIndexApi.end(mGoogleApiClient, viewAction);//
     }
 
     @Override
-    public void onConnected(@Nullable Bundle bundle) {
+    public void onConnected(@Nullable Bundle bundle)//
+    {
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient);
-        if (mLastLocation != null) {
+                mGoogleApiClient);//
+        if (mLastLocation != null)//
+        {
 
 //            etAdress.setText(String.valueOf(mLastLocation.getLatitude()));
 //            etAdress.append(","+String.valueOf(mLastLocation.getLongitude()));
 
-            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+            Geocoder geocoder = new Geocoder(this, Locale.getDefault());//
 
-            List<android.location.Address> addresses  = null;
+            List<android.location.Address> addresses  = null;//
             try {
-                addresses = geocoder.getFromLocation(mLastLocation.getLatitude(),mLastLocation.getLongitude(), 1);
-                String city = addresses.get(0).getLocality();
-                String state = addresses.get(0).getAdminArea();
-                String zip = addresses.get(0).getPostalCode();
-                String country = addresses.get(0).getCountryName();
-                etAddress.setText(city+","+state+","+zip+","+country);
-            } catch (IOException e) {
-                e.printStackTrace();
+                addresses = geocoder.getFromLocation(mLastLocation.getLatitude(),mLastLocation.getLongitude(), 1);//
+                String city = addresses.get(0).getLocality();//
+                String state = addresses.get(0).getAdminArea();//
+                String zip = addresses.get(0).getPostalCode();//
+                String country = addresses.get(0).getCountryName();//
+                etAddress.setText(city+","+state+","+zip+","+country);//
+            } catch (IOException e)//
+            {
+                e.printStackTrace();//
 
             }
 
@@ -247,7 +258,8 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
     }
 
     @Override
-    public void onConnectionSuspended(int i) {
+    public void onConnectionSuspended(int i)//
+    {
     }
 
     @Override

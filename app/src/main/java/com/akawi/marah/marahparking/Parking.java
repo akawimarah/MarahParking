@@ -16,8 +16,6 @@ public class Parking {
     private double lat;//location
     private double lng;//location
     private String owner;
-
-
     private String id;//
 
 

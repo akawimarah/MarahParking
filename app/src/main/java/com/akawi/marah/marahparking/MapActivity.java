@@ -33,7 +33,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private GoogleMap mMap;
     private Button btnAddParking;
     private ListView listView;
-    private MyAdapterParking adapterParking;
+    private MyAdapterParking adapterParking;//ka2in min no3 MyAdpterParking
 
     /**
      * t7ded el keyam bwasitat findViewById
@@ -41,14 +41,15 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
      */
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)//he awal 3malye tonafaz tlka2iyan(Called when the activity is first created)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+        setContentView(R.layout.activity_map);//setContentView btrbot ben el xml wil java
         btnAddParking = (Button) findViewById(R.id.btnAddParking);
         listView = (ListView) findViewById(R.id.listView);
-        adapterParking = new MyAdapterParking(this, R.layout.item_my_parking);
-        listView.setAdapter(adapterParking);
-        eventHandler();// astid3a1 ldalit eventHandler?
+        adapterParking = new MyAdapterParking(this, R.layout.item_my_parking);//
+        listView.setAdapter(adapterParking);//
+        eventHandler();// astid3a2 ldalit eventHandler 3shan ni2dar nista3mil ldali
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.(el7osol 3la supportMapFargment wtlaki tnbeh lma l5areta jahzi
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -76,8 +77,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             case R.id.itmSettings:
                 Toast.makeText(getBaseContext(), "settings", Toast.LENGTH_LONG).show();
                 break;
-
-
         }
         return true;
 
@@ -93,28 +92,24 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
      * installed Google Play services and returned to the app.
      */
 
-
-   
-    private void eventHandler(){
+    private void eventHandler()// dalit mo3aljit el 7adath ll2zrar(onclick dalit rad el fi3il)
+    {
 
         btnAddParking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MapActivity.this, AddParkingActivity.class);
-                startActivity(intent);
-//                DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
-//                reference.push().setValue("hello word");
-
+                Intent intent=new Intent(MapActivity.this, AddParkingActivity.class);// ainti2al min shashit el map l shashit addParking
+                startActivity(intent);//tsh3"el activity tanye bwasitit el intent
             }
         });
 
     }
 
     @Override
-    protected void onStart() {
+    protected void onStart()//dali tab3a ll activity (Called when the activity is becoming visible to the use)
+    {
         super.onStart();
-        initListView();
-
+        initListView();// aistd3a2 dalit initListView(3shan ywrjena lt3delat wil t3'yerat 3l activity)
     }
 
     @Override
@@ -133,16 +128,16 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         mMap.setMyLocationEnabled(true);// find my location
         // Add a marker in Sydney and move the camera
-        LatLng danon = new LatLng(32.9937, 35.1534);
-        mMap.addMarker(new MarkerOptions().position(danon).title("Marker in danon"));
+        LatLng danon = new LatLng(32.9937, 35.1534);// yibda min danon
+        mMap.addMarker(new MarkerOptions().position(danon).title("Marker in danon"));// ai3ta2 aisim llmarker
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(danon,12));
 
     }
 
     private void initListView(){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        email=email.replace(".","_");
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();// aist5raj el email
+        email=email.replace(".","_");//asma2 el jothor fe ka3dit lbyanat binfa3ish ti7we romoz ma3da( _)
         reference.child("Parkings").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

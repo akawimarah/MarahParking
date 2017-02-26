@@ -22,42 +22,29 @@ import com.google.firebase.auth.FirebaseUser;
 public class signUpActivity extends AppCompatActivity {
     private EditText etName, etMail,etPass1, etPass2;
     private Button btnsignIn;
-    private FirebaseAuth auth;
+    private FirebaseAuth auth;// ka2in mnst3mlo 3shan ni3mal signIn w signOut w signUp
     private FirebaseAuth.AuthStateListener authStateListener=new FirebaseAuth.AuthStateListener()//?
     {
 
         @Override
 
         public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
-            //4.
-
             FirebaseUser user=firebaseAuth.getCurrentUser();
-
             if(user!=null)
-
             {
-
                 //user is signed in
 
                 Toast.makeText(signUpActivity.this, "user is signed in.", Toast.LENGTH_SHORT).show();
-
-
             }
 
             else
-
             {
 
                 //user signed out
 
                 Toast.makeText(signUpActivity.this, "user signed out.", Toast.LENGTH_SHORT).show();
-
-
             }
-
         }
-
     };
 
     /**
@@ -65,16 +52,17 @@ public class signUpActivity extends AppCompatActivity {
      * @param savedInstanceState
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)// he awal 3malye tonafaz tlka2iyan(Called when the activity is first created)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_sign_in);//trbot ben el xml wil java
         etMail=(EditText)findViewById(R.id.etMail);
        etName=(EditText)findViewById(R.id.etName);
         etPass1=(EditText)findViewById(R.id.etPass1);
         etPass2=(EditText)findViewById(R.id.etPass2);
         btnsignIn=(Button)findViewById(R.id.btnSignIn);
         auth=FirebaseAuth.getInstance();//?
-        eventHandler();// aistd3a2 ldalit eventHandler (sho sbab el aistd3a2)
+        eventHandler();// aistd3a2 ldalit eventHandler 3shan ni2dar nist3mlha  (sho sbab el aistd3a2)
     }
 
     /**
@@ -111,13 +99,14 @@ public class signUpActivity extends AppCompatActivity {
 
     /**
      *  ll2zrar min ajil  mo3aljit el 7adath
+     *  onclick dalit rad el fi3il
      */
     private void eventHandler(){
         btnsignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                Intent i = new Intent(signUpActivity.this,MapActivity.class);// ynt2il min lshashi signup llshashi map
-                startActivity(i);//?
+                startActivity(i);//tsh3'el activity tani bwasitit el intent
                 dataHandler();// aistd3a2 ldalit dataHandler ( sho lsbab)
 
             }
@@ -129,23 +118,25 @@ public class signUpActivity extends AppCompatActivity {
 
     @Override
 
-    protected void onStart() {
+    protected void onStart()//dali tab3a ll activity (Called when the activity is becoming visible to the user)
+    {
 
         super.onStart();
 
-        auth.addAuthStateListener(authStateListener);
+        auth.addAuthStateListener(authStateListener);//
 
     }
 
     @Override
 
-    protected void onStop() {
+    protected void onStop()//dali tab3a ll activity (Called when the activity is no longer visible to the user)
+    {
 
         super.onStop();
 
-        if(authStateListener!=null)
+        if(authStateListener!=null)//
 
-            auth.removeAuthStateListener(authStateListener);
+            auth.removeAuthStateListener(authStateListener);//
 
     }
 
@@ -168,7 +159,7 @@ public class signUpActivity extends AppCompatActivity {
                 else// aiza bina2 el acount fishil
                 {
                     Toast.makeText(signUpActivity.this, "Authentication failed."+task.getException().getMessage(),Toast.LENGTH_SHORT).show();//  btb3at toast
-                    task.getException().printStackTrace();// sbab lfsahsal fe bna2 acount
+                    task.getException().printStackTrace();// sbab lfashal fe bna2 acount
                 }
             }
         });
