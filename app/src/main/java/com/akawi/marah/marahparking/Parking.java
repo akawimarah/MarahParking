@@ -15,7 +15,7 @@ public class Parking {
     private Date when;// Date of announcement
     private double lat;//location
     private double lng;//location
-    private String owner;
+    private String owner;//
     private String id;//
 
 

@@ -18,10 +18,11 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;////ka2in mnst3mlo 3shan ni3mal signIn w signOut w signUp
 import com.google.firebase.database.DataSnapshot;
+
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.DatabaseReference;// mo2ashir l3inwan ka3dit lbyanat fe el firebase
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -53,8 +54,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.(el7osol 3la supportMapFargment wtlaki tnbeh lma l5areta jahzi
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+                .findFragmentById(R.id.map);//
+        mapFragment.getMapAsync(this);//
     }
 
     @Override
@@ -135,7 +136,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     }
 
     private void initListView(){
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();//
         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();// aist5raj el email
         email=email.replace(".","_");//asma2 el jothor fe ka3dit lbyanat binfa3ish ti7we romoz ma3da( _)
         reference.child("Parkings").addValueEventListener(new ValueEventListener() {

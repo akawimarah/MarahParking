@@ -1,6 +1,6 @@
 package com.akawi.marah.marahparking;
 
-import android.Manifest;
+import android.Manifest;// bti7wi el t3refat l2sasye tb3it el mshro3 mitil el 2i3lan 3n kol lwajihat eltab3a llmshro3
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Geocoder;
@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,9 +28,9 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;//ka2in mnst3mlo 3shan ni3mal signIn w signOut w signUp
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.DatabaseReference;//mo2ashir l3inwan ka3dit lbyanat fe el firebase
 import com.google.firebase.database.FirebaseDatabase;
 
 
@@ -44,6 +45,11 @@ import java.util.Locale;
  */
 public class AddParkingActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks ,GoogleApiClient.OnConnectionFailedListener {
     DatabaseReference reference;// mo2ashir l3inwan ka3dit lbyanat fe el firebase
+    NotificationCompat.Builder mBuilder =
+            new NotificationCompat.Builder(this)
+                    .setSmallIcon(R.drawable.notification_icon)
+                    .setContentTitle("My notification")
+                    .setContentText("Hello World!");
     private CheckBox cb7enam;// payment or not
     private CheckBox cbShagira2;//Vacant or not
     private EditText etAddress;//address
@@ -82,6 +88,7 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
         }
 
     }
+
     /**
      * aist5raj fa7wa l7okol wmo3aljit el mo3tayat(fa7s kanonyet elmod5lat)
      */
@@ -98,8 +105,6 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
             startActivity(i);// tsh3'el activity tani bwasitit el intent
             Date date = Calendar.getInstance().getTime();//get the current time (date and time)
             Parking myParking = new Parking();// bina2 ka2in min fi2it parking
-            //myParking.setIsShagira(stIsShagira);
-            //myParking.setIs7enam(stIs7enam);
             //// TODO: 2/12/2017  get cuurent gps location and address
             myParking.setLat(mLastLocation.getLatitude());//
             myParking.setLng(mLastLocation.getLongitude());//
@@ -114,14 +119,14 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
             reference.child("Parkings").push().setValue(myParking, new DatabaseReference.CompletionListener()// mo2ashir l3inwan ka3dit el byanat l parkings ( push ll2idafi)(child btzed aibn lmbna el mo3tyat)
             {
                 @Override
-                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference)//
+                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference)//onComplete dali to5brna bjwab talab 7ifz el kemi
                 {
                     if (databaseError == null) {
-                        Toast.makeText(getBaseContext(), "save ok", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "save ok", Toast.LENGTH_LONG).show();// aiza zabt 7ifz el kemi btraji3 toast "save ok"
 
                     } else {
-                        Toast.makeText(getBaseContext(), "save Error" + databaseError.getMessage(), Toast.LENGTH_LONG).show();
-                        databaseError.toException().printStackTrace();
+                        Toast.makeText(getBaseContext(), "save Error" + databaseError.getMessage(), Toast.LENGTH_LONG).show();//aiza mzbatish 7ifz el kemi btraji3 toast "save Error"
+                        databaseError.toException().printStackTrace();// sbab fashal 7ifiz el kemi
                     }
                 }
             });
@@ -129,13 +134,14 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
 
         }
     }
+
     /**
      * ll2zrar min ajil  mo3aljit el 7adath
      *dalit onClick lrdod lfi3il
      * el listener  l7ifiz el kiyam bil firebase
      */
     private void eventHandler() {
-        
+
         btnSaveParking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -201,8 +207,7 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
         super.onStop();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
+        Action viewAction = Action.newAction(Action.TYPE_VIEW, // TODO: choose an action type.
                 "AddParkingActivity Page", // TODO: Define a title for the content shown.
                 // TODO: If you have web page content that matches this app activity's content,
                 // make sure this auto-generated web page URL is correct.
@@ -225,7 +230,7 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
 //            etAdress.setText(String.valueOf(mLastLocation.getLatitude()));
 //            etAdress.append(","+String.valueOf(mLastLocation.getLongitude()));
 
-            Geocoder geocoder = new Geocoder(this, Locale.getDefault());//
+            Geocoder geocoder = new Geocoder(this, Locale.getDefault());//ka2in bitwasal m3 5ra2it google mnb3tlo 3inwan braji3 2i7dathyat aw l3aks
 
             List<android.location.Address> addresses  = null;//
             try {
@@ -266,4 +271,5 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
 }

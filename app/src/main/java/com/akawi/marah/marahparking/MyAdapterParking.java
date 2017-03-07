@@ -10,18 +10,19 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;//ka2in mnst3mlo 3shan ni3mal signIn w signOut w signUp
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.DatabaseReference;// mo2ashir l3inwan ka3dit lbyanat fe el firebase
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by user on 11/22/2016.
  */
-public class MyAdapterParking extends ArrayAdapter<Parking> {
+public class MyAdapterParking extends ArrayAdapter<Parking>//
+{
     private DatabaseReference reference;//mo2ashir l3inwan ka3dit lbyanat fe el firebase
     public MyAdapterParking(Context context,int resource){
-        super(context,resource);
+        super(context,resource);//l2anha btiwrath min ArrayAdapter
         String email= FirebaseAuth.getInstance().getCurrentUser().getEmail();// aist5raj el email
         email=email.replace(".","_");//asma2 el jothor fe ka3dit lbyanat binfa3ish ti7we romoz ma3da( _)
         reference= FirebaseDatabase.getInstance().getReference(email).child("myParking");
@@ -29,7 +30,7 @@ public class MyAdapterParking extends ArrayAdapter<Parking> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_my_parking, parent, false);
+        convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_my_parking, parent, false);// btrbot ben el adapter wil item(ymkin)
        TextView ishagira=(TextView) convertView.findViewById(R.id.ishagira);
         TextView itextclock=(TextView) convertView.findViewById(R.id.itextclock);
        TextView i7enam=(TextView) convertView.findViewById(R.id.i7enam);
@@ -45,7 +46,7 @@ public class MyAdapterParking extends ArrayAdapter<Parking> {
         else
         i7enam.setText("without pay");
         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();// aist5raj el email
-        email=email.replace(".","_");//asma2 e; jothor fe ka3dit lbyanat binfa3ish ti7we romoz ma3da(_)
+        email=email.replace(".","_");//asma2 el jothor fe ka3dit lbyanat binfa3ish ti7we romoz ma3da(_)
         if(!email.equals(myParking.getOwner()))
             idel.setVisibility(View.GONE);
        else {
