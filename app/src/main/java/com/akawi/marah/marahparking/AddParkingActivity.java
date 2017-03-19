@@ -45,11 +45,6 @@ import java.util.Locale;
  */
 public class AddParkingActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks ,GoogleApiClient.OnConnectionFailedListener {
     DatabaseReference reference;// mo2ashir l3inwan ka3dit lbyanat fe el firebase
-    NotificationCompat.Builder mBuilder =
-            new NotificationCompat.Builder(this)
-                    .setSmallIcon(R.drawable.notification_icon)
-                    .setContentTitle("My notification")
-                    .setContentText("Hello World!");
     private CheckBox cb7enam;// payment or not
     private CheckBox cbShagira2;//Vacant or not
     private EditText etAddress;//address
@@ -271,5 +266,6 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
 
 }
