@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
@@ -23,6 +24,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.firebase.auth.FirebaseAuth;////ka2in mnst3mlo 3shan ni3mal signIn w signOut w signUp
 import com.google.firebase.database.DataSnapshot;
 
@@ -158,13 +160,17 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             return;
         }
 
+
         mMap.setMyLocationEnabled(true);// find my location
         // Add a marker in Sydney and move the camera
         LatLng danon = new LatLng(32.9937, 35.1534);// creating a sydney position with latitude 32.9937 and longitude 35.1534
         mMap.addMarker(new MarkerOptions().position(danon).title("Marker in danon"));// addmarker will add a marker at sydney position to the map with title "Marker in danon"
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(danon, 12));// to zoom sydney in level 12 use newLatLngZoom(sudney,12)
+        //mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);// zyade
+        mMap.setMyLocationEnabled(true);
 
     }
+
 
     private void initListView() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();//
@@ -176,8 +182,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 adapterParking.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Parking myParking = ds.getValue(Parking.class);
-                    //todo distance between my loc an parking loc
-
                     myParking.setId(ds.getKey());
                     adapterParking.add(myParking);
                     LatLng parkLoc = new LatLng(myParking.getLat(), myParking.getLng());
@@ -189,6 +193,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                         Location.distanceBetween(myParking.getLat(),myParking.getLng(),mylocation.getLatitude(),mylocation.getLongitude(),results);
                         if (results[0]<10*1000)
                             adapterParking.add(myParking);
+                            mMap.addPolyline(new PolylineOptions().add(parkLoc,myLoc)
+                                    .width(10)
+                                    .color(Color.RED)//zyade
+
+
+                            );
                     }
 
 
