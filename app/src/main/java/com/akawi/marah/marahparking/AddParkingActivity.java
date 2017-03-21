@@ -1,6 +1,7 @@
 package com.akawi.marah.marahparking;
 
 import android.Manifest;// bti7wi el t3refat l2sasye tb3it el mshro3 mitil el 2i3lan 3n kol lwajihat eltab3a llmshro3
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Geocoder;
@@ -140,7 +141,14 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
         btnSaveParking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dataHandler();
+                NotificationCompat.Builder mBuilder =
+                        (NotificationCompat.Builder) new NotificationCompat.Builder(AddParkingActivity.this)
+                                .setSmallIcon(R.mipmap.ic_launcher)
+                                .setContentTitle("Alrad")
+                                .setContentText("Agree!");// zyade
+                Intent resultIntent = new Intent(AddParkingActivity.this,MapActivity.class);//zyade
+                PendingIntent resultPendingIntent = PendingIntent.getActivity(AddParkingActivity.this, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);//zyade
+                                dataHandler();
             }
         });
         btnAddress.setOnClickListener(new View.OnClickListener() {

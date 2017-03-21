@@ -45,7 +45,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private LocationManager locationManager;
     private Location mylocation;
     private Button refresh;
-    private Button btnsignOut;
 
     /**
      * t7ded el keyam bwasitat findViewById
