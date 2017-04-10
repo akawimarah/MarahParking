@@ -36,6 +36,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -49,12 +50,12 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
     private CheckBox cb7enam;// payment or not
     private CheckBox cbShagira2;//Vacant or not
     private EditText etAddress;//address
-    private TextClock textClock;//Promotional clock
     private Button btnSaveParking;
     private GoogleApiClient mGoogleApiClient;//
     private Location mLastLocation;//
     private TextView tvAddress;
     private ImageButton btnAddress;
+
 
     @Override
     /**
@@ -67,7 +68,6 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
         cb7enam = (CheckBox) findViewById(R.id.cb7enam);
         cbShagira2 = (CheckBox) findViewById(R.id.cbShagira2);
         etAddress = (EditText) findViewById(R.id.etAddress);
-        textClock = (TextClock) findViewById(R.id.textClock);
         btnSaveParking = (Button) findViewById(R.id.btnSaveParking);
         tvAddress = (TextView) findViewById(R.id.tvAddress);
         btnAddress = (ImageButton) findViewById(R.id.btnAddress);
@@ -96,16 +96,18 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
             etAddress.setError("wrong Address");
             isOk = false;
         }
+
         if (isOk) {
             Intent i=new Intent(AddParkingActivity.this,MapActivity.class);// ainti2al min shashit el add lshashit el map
             startActivity(i);// tsh3'el activity tani bwasitit el intent
             Date date = Calendar.getInstance().getTime();//get the current time (date and time)
+            //String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
             Parking myParking = new Parking();// bina2 ka2in min fi2it parking
             //// TODO: 2/12/2017  get cuurent gps location and address
             myParking.setLat(mLastLocation.getLatitude());//
             myParking.setLng(mLastLocation.getLongitude());//
             myParking.setAdress(etAddress.getText().toString());//
-            myParking.setWhen(date);//
+           myParking.setWhen(date);
             myParking.setIs7enam(cb7enam.isChecked()+"");//
             myParking.setIsShagira(cbShagira2.isChecked()+"");//
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference();//
@@ -127,7 +129,6 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
                 }
             });
 
-
         }
     }
 
@@ -141,13 +142,13 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
         btnSaveParking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NotificationCompat.Builder mBuilder =
-                        (NotificationCompat.Builder) new NotificationCompat.Builder(AddParkingActivity.this)
-                                .setSmallIcon(R.mipmap.ic_launcher)
-                                .setContentTitle("Alrad")
-                                .setContentText("Agree!");// zyade
-                Intent resultIntent = new Intent(AddParkingActivity.this,MapActivity.class);//zyade
-                PendingIntent resultPendingIntent = PendingIntent.getActivity(AddParkingActivity.this, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);//zyade
+               // NotificationCompat.Builder mBuilder =
+                      //  (NotificationCompat.Builder) new NotificationCompat.Builder(AddParkingActivity.this)
+                              //  .setSmallIcon(R.mipmap.ic_launcher)
+                              //  .setContentTitle("Alrad")
+                              //  .setContentText("Agree!");// zyade
+               // Intent resultIntent = new Intent(AddParkingActivity.this,MapActivity.class);//zyade
+               // PendingIntent resultPendingIntent = PendingIntent.getActivity(AddParkingActivity.this, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);//zyade
                                 dataHandler();
             }
         });

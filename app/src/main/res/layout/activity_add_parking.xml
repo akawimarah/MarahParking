@@ -19,21 +19,14 @@
         android:hint="@string/Address"
         android:inputType="textPostalAddress" />
 
+
     <Button
         android:id="@+id/btnSaveParking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textClock"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tvAddress"
         android:text="Save" />
-
-    <TextClock
-        android:id="@+id/textClock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnSaveParking"
-        android:layout_alignStart="@+id/btnAddress" />
 
     <TextView
         android:id="@+id/tvAddress"

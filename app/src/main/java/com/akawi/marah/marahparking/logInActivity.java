@@ -1,5 +1,6 @@
 package com.akawi.marah.marahparking;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;//ka2in mnst3mlo 3shan ni3mal signI
  * tjhez mo2shrat fe el activity
  */
 
-public class LogInActivity extends AppCompatActivity {
+public class LogInActivity extends Activity {
     private EditText etEmail;//  email
     private EditText etPassword;//sisma
     private Button btnLogIn;

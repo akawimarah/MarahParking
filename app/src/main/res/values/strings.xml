@@ -12,5 +12,7 @@
 <string name="Address1">Address</string>
 <string name="Date">Date</string>
 <string name="Address">Address</string>
+    <string name="log_in">Log In</string>
+    <string name="new_account">New Account</string>
 
-    </resources>
+</resources>

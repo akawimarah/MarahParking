@@ -32,11 +32,12 @@ public class MyAdapterParking extends ArrayAdapter<Parking>//
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_my_parking, parent, false);// btrbot ben el adapter wil item(ymkin)
        TextView ishagira=(TextView) convertView.findViewById(R.id.ishagira);
-        TextView itextclock=(TextView) convertView.findViewById(R.id.itextclock);
        TextView i7enam=(TextView) convertView.findViewById(R.id.i7enam);
         TextView iAddress=(TextView)convertView.findViewById(R.id.etAddress);
         ImageButton idel = (ImageButton) convertView.findViewById(R.id.idel);
+        TextView itextclock=(TextView)convertView.findViewById(R.id.itextclock);
         final Parking myParking = getItem(position);//
+        //itextclock.setText(myParking.getWhen());
         if(myParking.getIsShagira().equals("true"))
                 ishagira.setText("Vacant");
         else

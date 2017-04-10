@@ -13,4 +13,7 @@
     <string name="Address1">العنوان</string>
     <string name="Date">التاريخ</string>
     <string name="title_activity_maps1"></string>
+    <string name="log_in">ألدخول</string>
+    <string name="new_account">حساب جديد</string>
+    <string name="google_maps_key"></string>
 </resources>

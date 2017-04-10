@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MarahParking</string>
-    <string name="repass"></string>
+    <string name="repass">סיסמה </string>
     <string name="logOut">יציאה</string>
     <string name="Email">דואר אלקטרוני</string>
     <string name="Name">שם</string>
-    <string name="Address"></string>
-    <string name="Date"></string>
+    <string name="Address">כתובת</string>
+    <string name="Date">תאריך</string>
+    <string name="Address1">כתובת</string>
+    <string name="Password">סיסמה </string>
+    <string name="email">דואר אלקטרוני</string>
+    <string name="log_in">כניסה </string>
+    <string name="new_account">חשבון חדש</string>
+    <string name="password">סיסמה</string>
+    <string name="settings">הגדרות </string>
 </resources>

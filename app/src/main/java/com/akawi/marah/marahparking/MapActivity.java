@@ -45,6 +45,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private LocationManager locationManager;
     private Location mylocation;
     private Button refresh;
+    private Button signOut;
 
     /**
      * t7ded el keyam bwasitat findViewById
@@ -62,6 +63,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         adapterParking = new MyAdapterParking(this, R.layout.item_my_parking);//
         listView.setAdapter(adapterParking);//
         refresh=(Button)findViewById(R.id.refresh);
+        signOut=(Button)findViewById(R.id.signOut);
         eventHandler();// astid3a2 ldalit eventHandler 3shan ni2dar nista3mil ldali
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.(el7osol 3la supportMapFargment wtlaki tnbeh lma l5areta jahzi
@@ -130,7 +132,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 initListView();
             }
         });
-
+     signOut.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+             FirebaseAuth.getInstance().signOut();
+             Intent i=new Intent(MapActivity.this,LogInActivity.class);
+             startActivity(i);
+         }
+     });
     }
 
     @Override
@@ -189,15 +198,16 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                         float[]results={0,0,0};
                         LatLng myLoc = new LatLng(mylocation.getLatitude(), mylocation.getLongitude());
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLoc, 12));
-                        Location.distanceBetween(myParking.getLat(),myParking.getLng(),mylocation.getLatitude(),mylocation.getLongitude(),results);
+                        Location.distanceBetween(myParking.getLat(),myParking.getLng(),mylocation.getLatitude(),mylocation.getLongitude(),results);//rad
                         if (results[0]<10*1000)
+
                             adapterParking.add(myParking);
-                            mMap.addPolyline(new PolylineOptions().add(parkLoc,myLoc)
-                                    .width(10)
-                                    .color(Color.RED)//zyade
+                            //mMap.addPolyline(new PolylineOptions().add(parkLoc,myLoc)
+                                  //  .width(10)
+                                    //.color(Color.RED)
 
 
-                            );
+                            //);
                     }
 
 
