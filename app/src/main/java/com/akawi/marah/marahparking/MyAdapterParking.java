@@ -25,7 +25,7 @@ public class MyAdapterParking extends ArrayAdapter<Parking>//
         super(context,resource);//l2anha btiwrath min ArrayAdapter
         String email= FirebaseAuth.getInstance().getCurrentUser().getEmail();// aist5raj el email
         email=email.replace(".","_");//asma2 el jothor fe ka3dit lbyanat binfa3ish ti7we romoz ma3da( _)
-        reference= FirebaseDatabase.getInstance().getReference(email).child("myParking");
+        reference= FirebaseDatabase.getInstance().getReference(email).child("Parkings");
     }
 
     @Override

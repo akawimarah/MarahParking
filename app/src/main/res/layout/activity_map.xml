@@ -20,24 +20,16 @@
         android:id="@+id/btnAddParking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/refresh"
-        android:layout_below="@+id/refresh"
-        android:text="Add Parking" />
+        android:text="Add Parking"
+        android:layout_above="@+id/refresh"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:id="@+id/refresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/map"
-        android:text="Refresh" />
-
-    <Button
-        android:id="@+id/signOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:text="New Button" />
+        android:text="Refresh"
+        android:layout_above="@+id/listView"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

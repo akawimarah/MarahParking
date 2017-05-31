@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.github.paolorotolo.appintro.AppIntro;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;//ka2in mnst3mlo 3shan ni3mal signI
  * tjhez mo2shrat fe el activity
  */
 
-public class LogInActivity extends Activity {
+public class LogInActivity extends AppCompatActivity {
     private EditText etEmail;//  email
     private EditText etPassword;//sisma
     private Button btnLogIn;
@@ -87,8 +88,7 @@ public class LogInActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent i=new Intent(LogInActivity.this,MapActivity.class);// bint2il min lshashi login llshashi map
-                startActivity(i);//tsh3'el activity tani bwasitit el intent
+
                 dataHandler();// aistd3a2 dalit dataHandler
 
 

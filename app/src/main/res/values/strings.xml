@@ -14,5 +14,8 @@
 <string name="Address">Address</string>
     <string name="log_in">Log In</string>
     <string name="new_account">New Account</string>
+    <string name="time">time</string>
+    <string name="saveParking">saveParking</string>
+    <string name="Address22">address2</string>
 
 </resources>

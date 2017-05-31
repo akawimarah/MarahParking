@@ -2,15 +2,18 @@ package com.akawi.marah.marahparking;
 
 import android.Manifest;// bti7wi el t3refat l2sasye tb3it el mshro3 mitil el 2i3lan 3n kol lwajihat eltab3a llmshro3
 import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -55,6 +58,8 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
     private Location mLastLocation;//
     private TextView tvAddress;
     private ImageButton btnAddress;
+    private boolean isAllPermissionsGranted;
+    private int REQUEST_CODE_ASK_PERMISSIONS=22;
 
 
     @Override
@@ -261,10 +266,69 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
+//            showDialogOK("Phone State & Call Phone Services Permission required for this app",
+//                    new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            switch (which) {
+//                                case DialogInterface.BUTTON_POSITIVE:
+//                                    checkAndRequestPermissions();
+//                                    break;
+//                                case DialogInterface.BUTTON_NEGATIVE:
+//                                    // proceed with logic by disabling the related features or quit the app.
+//                                    finish();
+//                                    break;
+//                            }
+//                        }
+//                    });
             return;
         }
 
     }
+    private void showDialogOK(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(this)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", okListener)
+                .create()
+                .show();
+    }
+    public void showPermissionsDialog() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int hasWriteExternalStoragePermission = checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            int hasWriteGetAccountsPermission = checkSelfPermission(android.Manifest.permission.GET_ACCOUNTS);
+
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.INTERNET}, REQUEST_CODE_ASK_PERMISSIONS);
+            } else {
+                isAllPermissionsGranted = true;
+            }
+        } else {
+            isAllPermissionsGranted = true;
+        }
+
+    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+//        if (requestCode == REQUEST_CODE_ASK_PERMISSIONS) {
+//            if (grantResults.length > 0) {
+//                boolean isAllPermissionsGranted = true;
+//                for (int i = 0; i < grantResults.length; i++) {
+//                    if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+//                        isAllPermissionsGranted = false;
+//                    }
+//                }
+//
+//                if (isAllPermissionsGranted) {
+//                    this.isAllPermissionsGranted = true;
+//                } else {
+//                    android.widget.Toast.makeText(this, "Please, grand permissions", android.widget.Toast.LENGTH_LONG).show();
+//                    showPermissionsDialog();
+//                }
+//            }
+//        }
+//    }
 
     @Override
     public void onConnectionSuspended(int i)//

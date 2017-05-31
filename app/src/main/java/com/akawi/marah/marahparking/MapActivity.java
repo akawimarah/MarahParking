@@ -22,6 +22,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -63,7 +64,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         adapterParking = new MyAdapterParking(this, R.layout.item_my_parking);//
         listView.setAdapter(adapterParking);//
         refresh=(Button)findViewById(R.id.refresh);
-        signOut=(Button)findViewById(R.id.signOut);
+        //signOut=(Button)findViewById(R.id.signOut);
         eventHandler();// astid3a2 ldalit eventHandler 3shan ni2dar nista3mil ldali
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.(el7osol 3la supportMapFargment wtlaki tnbeh lma l5areta jahzi
@@ -87,6 +88,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             public void onLocationChanged(Location location) {
                 //initListView();
                 mylocation=location;
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(mylocation.getLatitude(),mylocation.getLongitude())).zoom(10).build();
+
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 5000, null);
             }
 
             @Override
@@ -132,14 +136,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 initListView();
             }
         });
-     signOut.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-             FirebaseAuth.getInstance().signOut();
-             Intent i=new Intent(MapActivity.this,LogInActivity.class);
-             startActivity(i);
-         }
-     });
     }
 
     @Override
@@ -167,15 +163,21 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
+        mMap.getUiSettings().setZoomControlsEnabled(true);
 
 
         mMap.setMyLocationEnabled(true);// find my location
         // Add a marker in Sydney and move the camera
-        LatLng danon = new LatLng(32.9937, 35.1534);// creating a sydney position with latitude 32.9937 and longitude 35.1534
-        mMap.addMarker(new MarkerOptions().position(danon).title("Marker in danon"));// addmarker will add a marker at sydney position to the map with title "Marker in danon"
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(danon, 12));// to zoom sydney in level 12 use newLatLngZoom(sudney,12)
+//        LatLng danon = new LatLng(32.9937, 35.1534);// creating a sydney position with latitude 32.9937 and longitude 35.1534
+//        mMap.addMarker(new MarkerOptions().position(danon).title("Marker in danon"));// addmarker will add a marker at sydney position to the map with title "Marker in danon"
+       // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(danon, 16));// to zoom sydney in level 12 use newLatLngZoom(sudney,12)
+    //    CameraPosition cameraPosition = new CameraPosition.Builder().target(danon).zoom(10).build();
+
+     //   mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 5000, null);
+
         //mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);// zyade
-        mMap.setMyLocationEnabled(true);
+      //  mMap.setMyLocationEnabled(true);
+
 
     }
 
@@ -187,32 +189,36 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         reference.child("Parkings").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                adapterParking.clear();
+                adapterParking.clear();// bim7a el parking
+                int i=0;
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Parking myParking = ds.getValue(Parking.class);
                     myParking.setId(ds.getKey());
                     adapterParking.add(myParking);
                     LatLng parkLoc = new LatLng(myParking.getLat(), myParking.getLng());
-                    if(mylocation!=null) {
+                    adapterParking.add(myParking);
 
-                        float[]results={0,0,0};
-                        LatLng myLoc = new LatLng(mylocation.getLatitude(), mylocation.getLongitude());
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLoc, 12));
-                        Location.distanceBetween(myParking.getLat(),myParking.getLng(),mylocation.getLatitude(),mylocation.getLongitude(),results);//rad
-                        if (results[0]<10*1000)
-
-                            adapterParking.add(myParking);
-                            //mMap.addPolyline(new PolylineOptions().add(parkLoc,myLoc)
-                                  //  .width(10)
-                                    //.color(Color.RED)
-
-
-                            //);
-                    }
-
-
-
+//                    if(mylocation!=null) {
+//
+//                        float[]results={0,0,0};
+//                        LatLng myLoc = new LatLng(mylocation.getLatitude(), mylocation.getLongitude());
+//                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLoc, 12));
+//                        Location.distanceBetween(myParking.getLat(),myParking.getLng(),mylocation.getLatitude(),mylocation.getLongitude(),results);//rad
+//                        if (results[0]<10*1000)
+//
+//                            adapterParking.add(myParking);
+//
+//                    }
                     mMap.addMarker(new MarkerOptions().position(parkLoc).title(myParking.getAdress()));
+
+                    if(i==0) {
+                        i++;
+
+                        CameraPosition cameraPosition = new CameraPosition.Builder().target(parkLoc).zoom(10).build();
+
+                        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 5000, null);
+
+                    }
 
                 }
 

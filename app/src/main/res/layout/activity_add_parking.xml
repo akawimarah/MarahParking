@@ -26,7 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tvAddress"
-        android:text="Save" />
+        android:text="Save"
+        android:hint="@string/saveParking" />
 
     <TextView
         android:id="@+id/tvAddress"
@@ -34,7 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/btnAddress"
-        android:text="Address" />
+        android:text="Address"
+        android:hint="@string/Address22" />
 
     <ImageButton
         android:id="@+id/btnAddress"
