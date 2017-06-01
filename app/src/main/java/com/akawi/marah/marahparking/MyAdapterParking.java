@@ -35,7 +35,7 @@ public class MyAdapterParking extends ArrayAdapter<Parking>//
        TextView i7enam=(TextView) convertView.findViewById(R.id.i7enam);
         TextView iAddress=(TextView)convertView.findViewById(R.id.etAddress);
         ImageButton idel = (ImageButton) convertView.findViewById(R.id.idel);
-        TextView itextclock=(TextView)convertView.findViewById(R.id.itextclock);
+        //TextView itextclock=(TextView)convertView.findViewById(R.id.itextclock);
         final Parking myParking = getItem(position);//
         //itextclock.setText(myParking.getWhen());
         if(myParking.getIsShagira().equals("true"))

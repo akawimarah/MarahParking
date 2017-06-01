@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tvAddress"
-        android:text="Save"
+        android:text="@string/save"
         android:hint="@string/saveParking" />
 
     <TextView
@@ -35,8 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/btnAddress"
-        android:text="Address"
-        android:hint="@string/Address22" />
+        android:text="@string/address"
+       />
 
     <ImageButton
         android:id="@+id/btnAddress"
@@ -53,7 +53,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/cbShagira2"
         android:checked="false"
-        android:text="With Pay" />
+        android:text="@string/with_pay" />
 
     <CheckBox
         android:id="@+id/cbShagira2"
@@ -62,6 +62,6 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:checked="false"
-        android:text="Vacant" />
+        android:text="@string/vacant" />
 
 </RelativeLayout>

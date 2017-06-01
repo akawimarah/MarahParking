@@ -60,8 +60,8 @@ public class signUpActivity extends AppCompatActivity {
         etPass1=(EditText)findViewById(R.id.etPass1);
         etPass2=(EditText)findViewById(R.id.etPass2);
         btnsignIn=(Button)findViewById(R.id.btnSignIn);
-        auth=FirebaseAuth.getInstance();//?
-        eventHandler();// aistd3a2 ldalit eventHandler 3shan ni2dar nist3mlha  (sho sbab el aistd3a2)
+        auth=FirebaseAuth.getInstance();
+        eventHandler();// aistd3a2 ldalit eventHandler 3shan ni2dar nist3mlha
     }
 
     /**
@@ -135,7 +135,7 @@ public class signUpActivity extends AppCompatActivity {
 
         if(authStateListener!=null)//
 
-            auth.removeAuthStateListener(authStateListener);//
+            auth.removeAuthStateListener(authStateListener);
 
     }
 
@@ -149,7 +149,7 @@ public class signUpActivity extends AppCompatActivity {
         auth.createUserWithEmailAndPassword(email,passw).addOnCompleteListener(signUpActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful())// aiza bna2 el acunt niji7
+                if(task.isSuccessful())// aiza bina2 el acunt niji7
                 {
                     Toast.makeText(signUpActivity.this, "Authentication Successful.", Toast.LENGTH_SHORT).show();// btib3at toast aino l3malye nj7at
                     //updateUserProfile(task.getResult().getUser());

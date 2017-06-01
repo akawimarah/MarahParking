@@ -48,7 +48,8 @@ public class LogInActivity extends AppCompatActivity {
         auth= FirebaseAuth.getInstance();//?
         eventHandler();// aistd3a2 el dali bil oncreate 3shan ni2dar nst3milha
 
-        if(FirebaseAuth.getInstance().getCurrentUser()!=null)//?
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null)//ka2in mnst3mlo 3shan ni3mal signIn w signOut w signUp(bista5rij el user)
+
         {
             Intent intent=new Intent(LogInActivity.this,MapActivity.class);// ainti2al min lshashi login llshashi map
             startActivity(intent);//tsh3'el activity tani bwasitit el intent

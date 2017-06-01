@@ -14,4 +14,13 @@
     <string name="new_account">חשבון חדש</string>
     <string name="password">סיסמה</string>
     <string name="settings">הגדרות </string>
+    <string name="time">זמן</string>
+    <string name="vacant">פנוי</string>
+    <string name="with_pay">בתשלום </string>
+    <string name="title_activity_maps1"></string>
+    <string name="save">שמירה </string>
+    <string name="refresh">רענון </string>
+    <string name="address">כתובת </string>
+    <string name="Address22">כתובת</string>
+    <string name="add_parking">הוספת חניה </string>
 </resources>

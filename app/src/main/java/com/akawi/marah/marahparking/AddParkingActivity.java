@@ -108,7 +108,6 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
             Date date = Calendar.getInstance().getTime();//get the current time (date and time)
             //String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
             Parking myParking = new Parking();// bina2 ka2in min fi2it parking
-            //// TODO: 2/12/2017  get cuurent gps location and address
             myParking.setLat(mLastLocation.getLatitude());//
             myParking.setLng(mLastLocation.getLongitude());//
             myParking.setAdress(etAddress.getText().toString());//
@@ -225,7 +224,7 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
                 // TODO: Make sure this auto-generated app URL is correct.
                 Uri.parse("android-app://com.akawi.marah.marahparking/http/host/path")
         );
-        AppIndex.AppIndexApi.end(mGoogleApiClient, viewAction);//
+        AppIndex.AppIndexApi.end(mGoogleApiClient, viewAction);//Firebase App Indexing gets your app into Google Search. If users have your app installed, they can launch your app and go directly to the content they're searching
     }
 
     @Override

@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -48,6 +49,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private Button refresh;
     private Button signOut;
 
+
     /**
      * t7ded el keyam bwasitat findViewById
      *
@@ -64,7 +66,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         adapterParking = new MyAdapterParking(this, R.layout.item_my_parking);//
         listView.setAdapter(adapterParking);//
         refresh=(Button)findViewById(R.id.refresh);
-        //signOut=(Button)findViewById(R.id.signOut);
+        signOut=(Button)findViewById(R.id.signOut);
         eventHandler();// astid3a2 ldalit eventHandler 3shan ni2dar nista3mil ldali
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.(el7osol 3la supportMapFargment wtlaki tnbeh lma l5areta jahzi
@@ -136,6 +138,28 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 initListView();
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Parking p = (Parking) parent.getItemAtPosition(position);
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(p.getLat(),p.getLng())).zoom(10).build();
+
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 5000, null);
+
+
+
+            }
+        });
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MapActivity.this,LogInActivity.class);
+                startActivity(intent);
+
+
+            }
+        });
     }
 
     @Override
@@ -153,6 +177,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -164,9 +189,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             return;
         }
         mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
-
-        mMap.setMyLocationEnabled(true);// find my location
+        mMap.setMyLocationEnabled(true);
+      // find my location
         // Add a marker in Sydney and move the camera
 //        LatLng danon = new LatLng(32.9937, 35.1534);// creating a sydney position with latitude 32.9937 and longitude 35.1534
 //        mMap.addMarker(new MarkerOptions().position(danon).title("Marker in danon"));// addmarker will add a marker at sydney position to the map with title "Marker in danon"
@@ -191,12 +217,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             public void onDataChange(DataSnapshot dataSnapshot) {
                 adapterParking.clear();// bim7a el parking
                 int i=0;
+
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Parking myParking = ds.getValue(Parking.class);
                     myParking.setId(ds.getKey());
                     adapterParking.add(myParking);
                     LatLng parkLoc = new LatLng(myParking.getLat(), myParking.getLng());
-                    adapterParking.add(myParking);
 
 //                    if(mylocation!=null) {
 //

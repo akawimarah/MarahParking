@@ -17,5 +17,11 @@
     <string name="time">time</string>
     <string name="saveParking">saveParking</string>
     <string name="Address22">address2</string>
+    <string name="vacant">vacant</string>
+    <string name="save">Save</string>
+    <string name="address">Address</string>
+    <string name="with_pay">With Pay</string>
+    <string name="refresh">Refresh</string>
+    <string name="add_parking">Add Parking</string>
 
 </resources>

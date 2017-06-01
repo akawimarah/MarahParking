@@ -16,4 +16,12 @@
     <string name="log_in">ألدخول</string>
     <string name="new_account">حساب جديد</string>
     <string name="google_maps_key"></string>
+    <string name="vacant">شاغر </string>
+    <string name="time">الوقت</string>
+    <string name="with_pay">مع دفع </string>
+    <string name="save">احفظ</string>
+    <string name="refresh">تحديث</string>
+    <string name="address">عنوان</string>
+    <string name="Address22">العنوان</string>
+    <string name="add_parking">اضافة موقف</string>
 </resources>
