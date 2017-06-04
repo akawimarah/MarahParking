@@ -103,15 +103,14 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
         }
 
         if (isOk) {
-            Intent i=new Intent(AddParkingActivity.this,MapActivity.class);// ainti2al min shashit el add lshashit el map
-            startActivity(i);// tsh3'el activity tani bwasitit el intent
-            Date date = Calendar.getInstance().getTime();//get the current time (date and time)
+            // tsh3'el activity tani bwasitit el intent
+            //Date date = Calendar.getInstance().getTime();//get the current time (date and time)
             //String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
             Parking myParking = new Parking();// bina2 ka2in min fi2it parking
             myParking.setLat(mLastLocation.getLatitude());//
             myParking.setLng(mLastLocation.getLongitude());//
             myParking.setAdress(etAddress.getText().toString());//
-           myParking.setWhen(date);
+           //myParking.setWhen(date);
             myParking.setIs7enam(cb7enam.isChecked()+"");//
             myParking.setIsShagira(cbShagira2.isChecked()+"");//
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference();//
@@ -121,10 +120,12 @@ public class AddParkingActivity extends AppCompatActivity implements GoogleApiCl
             reference.child("Parkings").push().setValue(myParking, new DatabaseReference.CompletionListener()// mo2ashir l3inwan ka3dit el byanat l parkings ( push ll2idafi)(child btzed aibn lmbna el mo3tyat)
             {
                 @Override
-                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference)//onComplete dali to5brna bjwab talab 7ifz el kemi
+                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference)//onComplete dali to5brna bjwab talab 7ifz el kemi aiza n3am awl la
                 {
                     if (databaseError == null) {
                         Toast.makeText(getBaseContext(), "save ok", Toast.LENGTH_LONG).show();// aiza zabt 7ifz el kemi btraji3 toast "save ok"
+                        Intent i=new Intent(AddParkingActivity.this,MapActivity.class);// ainti2al min shashit el add lshashit el map
+                        startActivity(i);
 
                     } else {
                         Toast.makeText(getBaseContext(), "save Error" + databaseError.getMessage(), Toast.LENGTH_LONG).show();//aiza mzbatish 7ifz el kemi btraji3 toast "save Error"

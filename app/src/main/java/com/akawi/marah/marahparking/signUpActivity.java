@@ -106,7 +106,7 @@ public class signUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                Intent i = new Intent(signUpActivity.this,MapActivity.class);// ynt2il min lshashi signup llshashi map
                 startActivity(i);//tsh3'el activity tani bwasitit el intent
-                dataHandler();// aistd3a2 ldalit dataHandler ( sho lsbab)
+                dataHandler();// aistd3a2 ldalit dataHandler
 
             }
         });
